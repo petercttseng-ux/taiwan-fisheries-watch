@@ -1,0 +1,346 @@
+{
+  "surface": "dashboard",
+  "manifest": {
+    "version": 1,
+    "surface": "dashboard",
+    "title": "水產新聞與輿情監測儀表板",
+    "description": "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
+    "generatedAt": "2026-08-01T10:34:56+08:00",
+    "cards": [
+      {
+        "id": "card_mentions",
+        "dataset": "kpis",
+        "sourceId": "google_news_24h",
+        "description": "24 小時內經人工相關性篩選後的有效新聞則數。",
+        "metrics": [{"label": "有效新聞", "field": "mentions", "format": "number"}]
+      },
+      {
+        "id": "card_clusters",
+        "dataset": "kpis",
+        "sourceId": "google_news_24h",
+        "description": "將重複報導合併後的獨立事件數。",
+        "metrics": [{"label": "事件群組", "field": "clusters", "format": "number"}]
+      },
+      {
+        "id": "card_governance",
+        "dataset": "kpis",
+        "sourceId": "google_news_24h",
+        "description": "涉及治理、保育或執法，需注意政策溝通的報導數。",
+        "metrics": [{"label": "治理與保育", "field": "governance", "format": "number"}]
+      },
+      {
+        "id": "card_negative",
+        "dataset": "kpis",
+        "sourceId": "google_news_24h",
+        "description": "標題與事件內容呈現負向風險訊號的報導數。",
+        "metrics": [{"label": "負向訊號", "field": "negative", "format": "number"}]
+      }
+    ],
+    "charts": [
+      {
+        "id": "sentiment_chart",
+        "title": "新聞情緒分布",
+        "subtitle": "依新聞標題與可核實內容判讀；中性涵蓋政策公告與治理動態。",
+        "type": "bar",
+        "intent": "composition",
+        "dataset": "sentiment_summary",
+        "sourceId": "google_news_24h",
+        "encodings": {
+          "x": {"field": "sentiment", "type": "nominal", "label": "情緒"},
+          "y": {"field": "count", "type": "quantitative", "label": "新聞則數"},
+          "tooltip": [
+            {"field": "count", "type": "quantitative", "label": "則數"},
+            {"field": "share_pct", "type": "quantitative", "label": "占比", "unit": "%"}
+          ]
+        },
+        "valueFormat": "number",
+        "settings": {"sort": "descending", "showValues": true},
+        "palette": {"kind": "sequential", "name": "blue"},
+        "layout": "half"
+      },
+      {
+        "id": "topic_chart",
+        "title": "議題分布",
+        "subtitle": "石蚵推廣與保育規範各有同一事件的多篇報導，新聞則數因此高於事件群組數。",
+        "type": "horizontalBar",
+        "intent": "comparison",
+        "dataset": "topic_summary",
+        "sourceId": "google_news_24h",
+        "encodings": {
+          "x": {"field": "topic", "type": "nominal", "label": "議題"},
+          "y": {"field": "count", "type": "quantitative", "label": "新聞則數"},
+          "tooltip": [{"field": "count", "type": "quantitative", "label": "則數"}]
+        },
+        "valueFormat": "number",
+        "settings": {"sort": "descending", "showValues": true, "categoryLabelPolicy": "wrap"},
+        "palette": {"kind": "sequential", "name": "blue"},
+        "layout": "half"
+      }
+    ],
+    "tables": [
+      {
+        "id": "news_short",
+        "title": "最新新聞與簡要版回應",
+        "subtitle": "簡要版均控制在 100 字以內；點開來源欄位可追溯原始新聞。",
+        "dataset": "news_items",
+        "sourceId": "google_news_24h",
+        "defaultSort": {"field": "hours_ago", "direction": "asc"},
+        "density": "spacious",
+        "layout": "full",
+        "columns": [
+          {"field": "hours_ago", "label": "距今(小時)", "format": "number"},
+          {"field": "priority", "label": "優先級", "type": "text"},
+          {"field": "source", "label": "來源", "type": "text"},
+          {"field": "title", "label": "新聞標題", "type": "text"},
+          {"field": "topic", "label": "議題", "type": "text"},
+          {"field": "sentiment", "label": "情緒", "type": "text"},
+          {"field": "short_response", "label": "水試所簡要回應", "type": "text"},
+          {"field": "url", "label": "新聞連結", "type": "text"}
+        ]
+      },
+      {
+        "id": "news_detailed",
+        "title": "逐則詳細版回應",
+        "subtitle": "詳細版均控制在 600 字以內，內容聚焦科學證據、技術應用、資源永續與跨機關協作。",
+        "dataset": "news_items",
+        "sourceId": "google_news_24h",
+        "defaultSort": {"field": "hours_ago", "direction": "asc"},
+        "density": "spacious",
+        "layout": "full",
+        "columns": [
+          {"field": "hours_ago", "label": "距今(小時)", "format": "number"},
+          {"field": "title", "label": "新聞標題", "type": "text"},
+          {"field": "detailed_response", "label": "水試所詳細回應", "type": "text"}
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "google_news_24h",
+        "label": "Google 新聞：水產／漁業／養殖（24 小時）",
+        "path": "news_snapshot.sql",
+        "href": "https://news.google.com/search?q=(%E6%B0%B4%E7%94%A2%20OR%20%E6%BC%81%E6%A5%AD%E7%BD%B2%20OR%20%E6%B0%B4%E7%94%A2%E8%A9%A6%E9%A9%97%E6%89%80%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF%20OR%20%E6%B0%B4%E7%94%A2%E5%93%81%20OR%20%E6%BC%81%E6%9D%91%20OR%20%E6%B5%B7%E6%B4%8B%E4%BF%9D%E8%82%B2%20OR%20%E5%9C%8B%E9%9A%9B%E6%BC%81%E6%A5%AD)%20-%E8%85%90%E5%B1%8D%20-%E7%94%B7%E5%B1%8D%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+      },
+      {
+        "id": "yam_iuu",
+        "label": "蕃新聞：臺美漁業合作與 IUU",
+        "href": "https://n.yam.com/Article/20260729250190"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "intro",
+        "type": "markdown",
+        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 10:34（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪新增 1 則具臺灣治理參考價值的國際報導，關注菲律賓商業漁船監控規定遭法院裁決失效後，保育團體對 IUU 漁撈監測及小規模漁民保障的疑慮；目前共 12 則新聞、10 個事件群組。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
+      },
+      {"id": "metrics", "type": "metric-strip", "cardIds": ["card_mentions", "card_clusters", "card_governance", "card_negative"]},
+      {"id": "sentiment", "type": "chart", "chartId": "sentiment_chart", "layout": "half"},
+      {"id": "topics", "type": "chart", "chartId": "topic_chart", "layout": "half"},
+      {"id": "short", "type": "table", "tableId": "news_short", "layout": "full"},
+      {"id": "detailed", "type": "table", "tableId": "news_detailed", "layout": "full"},
+      {
+        "id": "method",
+        "type": "markdown",
+        "sourceId": "google_news_24h",
+        "body": "## 判讀與使用注意\n\n- 情緒標記反映新聞事件與標題語氣，不代表水試所對媒體或當事人的評價。\n- 同一事件的多篇媒體報導會保留為獨立新聞，但以事件群組避免誤判熱度。\n- 回應以科學研發、技術推廣、資源永續、食安與跨機關協作為核心；涉及執法、裁罰或個案認定時，尊重權責機關調查。\n- 本儀表板為監測快照，後續每次更新應保留來源、時間與變更紀錄。"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-01T10:34:56+08:00",
+    "status": "ready",
+    "datasets": {
+      "kpis": [
+        {"mentions": 12, "clusters": 10, "governance": 6, "negative": 2}
+      ],
+      "sentiment_summary": [
+        {"sentiment": "中性", "count": 5, "share_pct": 41.7},
+        {"sentiment": "正向", "count": 5, "share_pct": 41.7},
+        {"sentiment": "負向", "count": 2, "share_pct": 16.7}
+      ],
+      "topic_summary": [
+        {"topic": "資源保育規範", "count": 2},
+        {"topic": "國際漁業治理", "count": 2},
+        {"topic": "消費市場", "count": 1},
+        {"topic": "漁獲執法", "count": 1},
+        {"topic": "漁村體驗推廣", "count": 2},
+        {"topic": "養殖市場與食安溝通", "count": 1},
+        {"topic": "漁港設施與地方治理", "count": 1},
+        {"topic": "地方創生與養殖轉型", "count": 1},
+        {"topic": "漁村文化與人才培育", "count": 1}
+      ],
+      "news_items": [
+        {
+          "id": "n1",
+          "cluster_id": "c1",
+          "hours_ago": 3,
+          "priority": "低",
+          "source": "蕃新聞",
+          "title": "跟著海風趣蚵田！漁村體驗報名中",
+          "topic": "漁村體驗推廣",
+          "sentiment": "正向",
+          "url": "https://news.google.com/read/CBMiUkFVX3lxTE9qNndRZFRhSlM1SW8yWk4xOVgzUm80MVhjOUh1YzFxM2NzNG1pdVBiMnVtLUtXbVpJMlA5Q2xyMEJXM2lVa1RYZVFCQmJaVE9IOGc?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant",
+          "short_response": "樂見漁村體驗增進民眾理解養殖環境；水試所將持續以科普與技術推廣，深化永續養蚵及食魚教育。",
+          "detailed_response": "水試所樂見以蚵田體驗連結漁村文化、養殖知識與消費者教育。此類活動若能同步說明牡蠣生態、養殖環境承載、產品衛生、氣候風險與廢棄蚵架管理，可讓民眾更完整理解產業。水試所將持續提供科學資料與養殖技術，並與地方政府、漁會及產業團體合作推廣負責任養殖與食魚教育。活動執行仍應兼顧場域安全、生物安全及環境維護。"
+        },
+        {
+          "id": "n2",
+          "cluster_id": "c2",
+          "hours_ago": 5,
+          "priority": "中",
+          "source": "星島加拿大",
+          "title": "卑詩男子非法持有珍貴漁獲 被罰款5500元禁釣一年",
+          "topic": "漁獲執法",
+          "sentiment": "負向",
+          "url": "https://news.google.com/read/CBMijwFBVV95cUxNN25KbWh6emtwZnRKZk5maDYyX2RWNGdEa3RIVHdYNUZwSjhqOW9lR1VoN19hMW8zZ1hfUl9BOWRIT1Z6RmlCZVdEMEVFNnc1TUtRVlB5U2tUZ01SNmtQUDVIODczX2lWVlZiYUJocEZnUjdNM1FaM0xTb0xkTFJBRWVVZkJ6c0lkbjd1UGFRUQ?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant",
+          "short_response": "海外違法漁獲案件顯示科學配額、物種辨識與可追溯管理的重要；水試所將持續強化保育研究與技術支援。",
+          "detailed_response": "本案屬加拿大司法與漁業管理範疇，水試所尊重當地權責機關認定。從科研與技術角度，珍貴或資源量偏低物種的管理需建立在族群評估、尺寸與季節限制、漁獲辨識及可追溯紀錄之上。水試所將持續精進臺灣重要水產資源調查、物種鑑定及數位監測技術，並協助漁民與消費端理解保育規範。個案裁罰不宜直接類比臺灣制度，但可作為法遵教育與風險溝通參考。"
+        },
+        {
+          "id": "n3",
+          "cluster_id": "c3",
+          "hours_ago": 14,
+          "priority": "高",
+          "source": "蕃新聞",
+          "title": "臺美持續深化漁業合作 共同打擊IUU漁撈行為",
+          "topic": "國際漁業治理",
+          "sentiment": "中性",
+          "url": "https://n.yam.com/Article/20260729250190",
+          "short_response": "水試所支持以科學資料、追溯及監測技術強化臺美合作，共同提升IUU防制、資源永續與產業韌性。",
+          "detailed_response": "水試所支持臺美就非法、未報告及不受規範（IUU）漁撈、漁業人權與國際參與深化合作。科研面可透過資源量評估、漁獲與混獲監測、物種鑑定、電子化紀錄及養殖技術交流，提供治理所需證據。報導亦提及續簽漁業及養殖合作備忘錄，以及輸美資格證明與海洋哺乳類保護規範等技術議題；水試所可在權責範圍內協助資料標準、監測方法與技術應用，並配合漁業署及相關機關提升透明度與國際信任。"
+        },
+        {
+          "id": "n4",
+          "cluster_id": "c4",
+          "hours_ago": 18,
+          "priority": "低",
+          "source": "壹電視",
+          "title": "北市內湖水產店超佛心價冷凍水餃 一顆不到2元現已買嘸",
+          "topic": "消費市場",
+          "sentiment": "正向",
+          "url": "https://news.google.com/read/CBMie0FVX3lxTFBtd1VwYjdVOWUwUFY3NjBvV3dzQUNyLVdjbmVHQVhhSEZsRjVsUFJoTlM2T1p5S2VENHVkYnZ4el8xM1dZSG9XcHZEb2FlQlNqZlVadUtDMjZtMm1EMGthS211MDV3Zk5fbmFBV2JvaUVaWXR6eFE3Z3JvVQ?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant",
+          "short_response": "價格話題反映消費關注；選購冷凍水產食品仍應確認標示、來源、保存與冷鏈，不宜僅以低價判斷品質。",
+          "detailed_response": "本則主要屬零售價格與消費話題，僅憑售價無法判斷原料品質或安全。水試所建議消費者選購冷凍水產加工食品時，確認品名、成分、原產地、有效日期、保存條件及包裝完整性，並維持冷凍冷鏈、充分加熱。若涉及食品標示或安全查驗，應以衛生主管機關及業者正式資訊為準。水試所將持續推動水產品加工、保鮮與品質技術研究，協助產業提升產品穩定性與消費信任。"
+        },
+        {
+          "id": "n5",
+          "cluster_id": "c5",
+          "hours_ago": 20,
+          "priority": "高",
+          "source": "LINE TODAY／Newtalk",
+          "title": "吃蟹注意！8/1起保護抱卵母蟹禁捕禁售 違者最高開罰15萬元",
+          "topic": "資源保育規範",
+          "sentiment": "中性",
+          "url": "https://news.google.com/read/CBMiVkFVX3lxTE0xYVQ4Umdxd0RqQkU4MDVaT2JVR0wyRE9lN1NFd2JvcjFpLVpRT2hQaE5tUmlpemN2anZ6NjUtUE9rTE5jT1lIWmRTdFE2Y0hBSHRWZTB3?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant",
+          "short_response": "保護抱卵母蟹與小蟹有助資源補充；水試所將持續提供族群與繁殖研究，支持科學化管理及產業宣導。",
+          "detailed_response": "蟳蟹繁殖期保護抱卵母蟹與未達規定尺寸個體，是維持資源補充與漁業永續的重要措施。水試所將持續進行生物學、繁殖週期、資源變動及棲地環境研究，提供管理措施調整所需科學依據；並協助開發物種與抱卵辨識、養殖繁育及資源復育技術。漁民、販售業者與消費者應依漁業署公告及地方權責機關說明辦理。涉及查緝與裁罰，則由主管機關依法認定。"
+        },
+        {
+          "id": "n6",
+          "cluster_id": "c5",
+          "hours_ago": 21,
+          "priority": "高",
+          "source": "中華新聞雲／中華日報",
+          "title": "8/1起進入蟳蟹繁殖期 漁業署籲禁捕售小蟹與抱卵母蟹",
+          "topic": "資源保育規範",
+          "sentiment": "中性",
+          "url": "https://news.google.com/read/CBMiUkFVX3lxTE9zUXIwSUlrYVBQaEU2TlFlMklrN3BQQVQwS2EwMzZTVFB4NHRSbHZBb2djZHhzek5vQjY0ZzI2YjlzdlB3OHBERy1Ka3J2SFlPWlE?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant",
+          "short_response": "水試所支持繁殖期保育措施，將以資源調查與繁養殖技術協助蟳蟹資源永續，並加強產業端辨識宣導。",
+          "detailed_response": "水試所支持依科學證據推動蟳蟹繁殖期保育。禁捕售抱卵母蟹與小型個體，可降低成熟前與繁殖個體的捕撈壓力，讓族群有機會補充。後續應持續蒐集漁獲量、體長組成、抱卵比例、季節與海域差異等資料，評估措施成效並滾動調整。水試所亦將精進種苗繁育、養殖管理及資源復育研究，並與漁業署、地方政府、漁會及通路合作，協助第一線正確辨識與落實規範。"
+        },
+        {
+          "id": "n7",
+          "cluster_id": "c6",
+          "hours_ago": 1,
+          "priority": "高",
+          "source": "ESG遠見",
+          "title": "從洗腎魚變身壽司主角！一條巴沙魚逆襲全球漁市",
+          "topic": "養殖市場與食安溝通",
+          "sentiment": "中性",
+          "url": "https://esg.gvm.com.tw/article/94734",
+          "short_response": "巴沙魚議題應回到檢驗與追溯證據；水試所將持續推動養殖、加工與品質研究，協助消費者辨識資訊。",
+          "detailed_response": "以「洗腎魚」等標籤概括巴沙魚，容易造成污名與錯誤風險認知。報導引述食藥署資料指出，輸入水產品會接受重金屬、動物用藥及食品添加物抽驗，近期越南巴沙魚未見邊境檢驗不合格紀錄；個別產品安全仍應以主管機關檢驗、來源追溯與標示為準。水試所將持續投入養殖環境、魚種鑑別、加工保鮮與品質技術研究，協助產業提升透明度。面對氣候變遷與白肉魚供應結構改變，也應同步評估生產效率、環境承載、用藥管理與市場韌性。"
+        },
+        {
+          "id": "n8",
+          "cluster_id": "c1",
+          "hours_ago": 10,
+          "priority": "中",
+          "source": "金門日報",
+          "title": "推廣傳統石蚵產業 水試所漁村體驗報名",
+          "topic": "漁村體驗推廣",
+          "sentiment": "正向",
+          "url": "https://www.kmdn.gov.tw/1117/1271/1272/589047",
+          "short_response": "本活動由金門縣水試所辦理。中央水試所樂見石蚵科普，並將持續以研究與技術協助養殖永續。",
+          "detailed_response": "本報導所稱「水試所」為金門縣水產試驗所，與中央農業部水產試驗所為不同機關，對外溝通應清楚區隔。活動規劃於古寧頭北山進行漁村走讀、潮間帶生態探索、石蚵養殖解說及料理體驗，有助民眾理解傳統產業與海洋環境的關係。中央水試所樂見地方推動水產科普，並可在權責範圍內就牡蠣養殖、環境承載、生物安全、產品品質及氣候調適提供研究與技術交流，支持文化保存與資源永續利用。"
+        },
+        {
+          "id": "n9",
+          "cluster_id": "c7",
+          "hours_ago": 17,
+          "priority": "中",
+          "source": "TDN台灣生活新聞",
+          "title": "揮別毛胚屋！民代爭取經費活化漁港空間",
+          "topic": "漁港設施與地方治理",
+          "sentiment": "中性",
+          "url": "https://news.google.com/read/CBMiUEFVX3lxTE03WlgxeThyT0p1WnNiRC02UlVSSVdQeVF2X3RBTjJnS3pUUDVLM2lqQ2JjdTlwSmNBSUphWS1Xa2tNcUxiWkF6RFE1WThzUEtP?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant",
+          "short_response": "漁港活化應優先維持作業與安全功能，兼顧冷鏈、防災、環境及公共使用；水試所可提供技術建議。",
+          "detailed_response": "漁港空間活化若能改善產業服務與公共使用，具有地方發展效益；規劃仍應以漁業作業、安全及生產需求為優先，並納入卸魚動線、冷鏈衛生、防災韌性、廢棄物處理、能源效率與環境承載。水試所可在權責範圍內提供水產品保鮮、加工、養殖技術及環境監測等專業建議。由於目前可核實資訊主要為新聞標題，實際經費、設計內容與權責分工，仍應以地方政府及漁業主管機關正式資料為準。"
+        },
+        {
+          "id": "n10",
+          "cluster_id": "c8",
+          "hours_ago": 2,
+          "priority": "中",
+          "source": "udn女子漾／旅奇傳媒",
+          "title": "從九孔池走向地方活化 返鄉十餘年的李勝興用一生守住貢寮的海洋未來",
+          "topic": "地方創生與養殖轉型",
+          "sentiment": "正向",
+          "url": "https://woman.udn.com/woman/amp/story/123162/9657823",
+          "short_response": "九孔池再利用結合地方創生與海洋教育值得關注；水試所可就養殖、生態承載與場域安全提供技術支持。",
+          "detailed_response": "報導呈現返鄉者整建廢棄九孔養殖池、結合體驗旅遊與海洋保育的地方創生案例。水試所樂見既有養殖場域透過適當規劃重新創造公共與產業價值；再利用過程應先評估水質、結構安全、生態承載、生物安全、極端天候與廢棄物管理，並避免體驗活動干擾棲地或造成外來種風險。水試所可就九孔及相關水產養殖、健康管理、環境監測與科普內容提供技術交流，協助地方建立兼顧產業、教育與保育的長期營運模式。"
+        },
+        {
+          "id": "n11",
+          "cluster_id": "c9",
+          "hours_ago": 1,
+          "priority": "中",
+          "source": "自由時報",
+          "title": "東港青年壯遊培訓外語導覽員推動漁村文化走向國際",
+          "topic": "漁村文化與人才培育",
+          "sentiment": "正向",
+          "url": "https://news.google.com/read/CBMiZEFVX3lxTE1GVk42cjI2T1hCZmtsenVHS0g3bUs2UF9KeFhTLURjTlV2RWNteEtFZ044dXI0Z1I2RTZra0RVV0NQc1FzMWhfWlljazRwQXJxQzY2Z2RNbWtvSW52NTRmZHZGb24?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant",
+          "short_response": "漁村外語導覽培力有助產業文化國際溝通；水試所可提供科學內容與技術素材，提升導覽正確性。",
+          "detailed_response": "報導標題顯示東港推動青年壯遊與外語導覽培訓，方向有助漁村文化、產業知識與國際旅客溝通。水試所可就漁業資源、養殖技術、水產品品質安全、海洋環境及氣候調適提供科學素材，並與地方政府、學校、漁會及社區協作，協助導覽內容兼具在地敘事與科學正確性。因本輪僅核實 Google 新聞標題與發布時間，課程內容、主辦單位及執行成效仍應以正式資料為準。"
+        },
+        {
+          "id": "n12",
+          "cluster_id": "c10",
+          "hours_ago": 0,
+          "priority": "高",
+          "source": "INQUIRER.net",
+          "title": "SC ruling weakens fight against illegal fishing, group warns",
+          "topic": "國際漁業治理",
+          "sentiment": "負向",
+          "url": "https://newsinfo.inquirer.net/2275215/sc-ruling-weakens-fight-against-illegal-fishing-group-warns",
+          "short_response": "菲律賓漁船監控裁決凸顯VMS與電子回報的重要；水試所支持以科學資料、追溯及風險溝通強化治理。",
+          "detailed_response": "本案屬菲律賓司法與漁業治理範疇，水試所尊重當地法院及主管機關權責。報導指出，當地最高法院裁決使商業漁船強制監控與電子回報規定失效，保育團體憂心影響IUU漁撈查緝、近岸小規模漁民保障、漁獲追溯與海難定位。對臺灣的參考在於，船位監測、電子漁獲資料及資源評估需有清楚法源、資料治理與比例原則支持。水試所可持續提供資源量、漁獲與混獲、棲地及物種鑑定等科研資料，並配合漁業署與相關機關強化技術驗證及國際交流；制度適用仍由權責機關依法決定。"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "google_news_24h",
+      "label": "Google 新聞：水產／漁業／養殖（24 小時）",
+      "path": "news_snapshot.sql",
+      "href": "https://news.google.com/search?q=(%E6%B0%B4%E7%94%A2%20OR%20%E6%BC%81%E6%A5%AD%E7%BD%B2%20OR%20%E6%B0%B4%E7%94%A2%E8%A9%A6%E9%A9%97%E6%89%80%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF%20OR%20%E6%B0%B4%E7%94%A2%E5%93%81%20OR%20%E6%BC%81%E6%9D%91%20OR%20%E6%B5%B7%E6%B4%8B%E4%BF%9D%E8%82%B2%20OR%20%E5%9C%8B%E9%9A%9B%E6%BC%81%E6%A5%AD)%20-%E8%85%90%E5%B1%8D%20-%E7%94%B7%E5%B1%8D%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+    },
+    {
+      "id": "yam_iuu",
+      "label": "蕃新聞：臺美漁業合作與 IUU",
+      "href": "https://n.yam.com/Article/20260729250190"
+    }
+  ]
+}
