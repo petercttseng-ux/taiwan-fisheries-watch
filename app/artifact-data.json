@@ -5,7 +5,7 @@
     "surface": "dashboard",
     "title": "水產新聞與輿情監測儀表板",
     "description": "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
-    "generatedAt": "2026-08-01T12:19:58+08:00",
+    "generatedAt": "2026-08-01T12:29:59+08:00",
     "cards": [
       {
         "id": "card_mentions",
@@ -61,7 +61,7 @@
       {
         "id": "topic_chart",
         "title": "議題分布",
-        "subtitle": "蟳蟹保育規範與石蚵推廣各有同一事件的多篇報導，新聞則數因此高於事件群組數。",
+        "subtitle": "蟳蟹保育規範有多篇媒體報導，均以 c5 群組避免重複計算事件熱度。",
         "type": "horizontalBar",
         "intent": "comparison",
         "dataset": "topic_summary",
@@ -131,13 +131,18 @@
         "label": "Google 新聞：臺灣政府來源水產監測（24 小時）",
         "path": "news_snapshot.sql",
         "href": "https://news.google.com/search?q=site%3Agov.tw%20(%E6%BC%81%E6%A5%AD%20OR%20%E6%B0%B4%E7%94%A2%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF)%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+      },
+      {
+        "id": "gazette_aquaculture_disaster_loan",
+        "label": "行政院公報：農業天然災害低利貸款項目及額度",
+        "href": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032122/ch07/type3/gov88/num22/images/Eg01.pdf"
       }
     ],
     "blocks": [
       {
         "id": "intro",
         "type": "markdown",
-        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 12:19（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪新增 1 則 Newtalk 蟳蟹繁殖期保育報導，經事件比對後併入既有 c5 群組；目前共 13 則新聞、10 個事件群組。已排除僅因地名、活動或一般農業關鍵字命中但與水產產業無直接關聯的結果。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
+        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 12:29（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪新增 2 則：Yahoo 新聞轉載蟳蟹繁殖期保育報導，併入既有 c5 群組；行政院公報公布含魚塭養殖項目的農業天然災害低利貸款額度，新增 c11 政策事件。目前共 15 則新聞、11 個事件群組。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
       },
       {"id": "metrics", "type": "metric-strip", "cardIds": ["card_mentions", "card_clusters", "card_governance", "card_negative"]},
       {"id": "sentiment", "type": "chart", "chartId": "sentiment_chart", "layout": "half"},
@@ -154,19 +159,19 @@
   },
   "snapshot": {
     "version": 1,
-    "generatedAt": "2026-08-01T12:19:58+08:00",
+    "generatedAt": "2026-08-01T12:29:59+08:00",
     "status": "ready",
     "datasets": {
       "kpis": [
-        {"mentions": 13, "clusters": 10, "governance": 7, "negative": 2}
+        {"mentions": 15, "clusters": 11, "governance": 9, "negative": 2}
       ],
       "sentiment_summary": [
-        {"sentiment": "中性", "count": 6, "share_pct": 46.2},
-        {"sentiment": "正向", "count": 5, "share_pct": 38.5},
-        {"sentiment": "負向", "count": 2, "share_pct": 15.4}
+        {"sentiment": "中性", "count": 8, "share_pct": 53.3},
+        {"sentiment": "正向", "count": 5, "share_pct": 33.3},
+        {"sentiment": "負向", "count": 2, "share_pct": 13.3}
       ],
       "topic_summary": [
-        {"topic": "資源保育規範", "count": 3},
+        {"topic": "資源保育規範", "count": 4},
         {"topic": "國際漁業治理", "count": 2},
         {"topic": "消費市場", "count": 1},
         {"topic": "漁獲執法", "count": 1},
@@ -174,7 +179,8 @@
         {"topic": "養殖市場與食安溝通", "count": 1},
         {"topic": "漁港設施與地方治理", "count": 1},
         {"topic": "地方創生與養殖轉型", "count": 1},
-        {"topic": "漁村文化與人才培育", "count": 1}
+        {"topic": "漁村文化與人才培育", "count": 1},
+        {"topic": "養殖韌性與災害金融", "count": 1}
       ],
       "news_items": [
         {
@@ -346,6 +352,34 @@
           "url": "https://newtalk.tw/news/view/2026-08-01/1050702",
           "short_response": "水試所支持依科學證據推動蟳蟹繁殖期保育，並將持續資源調查與技術支援；查緝及裁罰由權責機關依法辦理。",
           "detailed_response": "報導重申8月1日至12月31日禁止捕撈、販售或陳列抱卵母蟹，並列出多種蟳蟹最小甲殼尺寸；相關規範與裁罰仍以漁業署公告及權責機關認定為準。水試所支持以長期資源調查、繁殖生物學與漁獲組成分析評估管理成效，並可配合漁業署、海巡署、地方政府與學術單位提供物種辨識、尺寸量測、資源評估及產業宣導等技術支援。報導所述平均漁獲量回穩，仍宜持續觀察年度、海域與物種差異，避免僅以單一總量指標判定資源完全恢復。"
+        },
+        {
+          "id": "n14",
+          "cluster_id": "c5",
+          "hours_ago": 0,
+          "published_at": "2026-08-01T12:24:00+08:00",
+          "priority": "高",
+          "source": "Yahoo新聞／Newtalk",
+          "title": "秋蟹季別亂抓！漁業署今起嚴禁捕撈抱卵母蟹：違規最高重罰15萬元",
+          "topic": "資源保育規範",
+          "sentiment": "中性",
+          "url": "https://news.google.com/read/CBMinANBVV95cUxNcWJaYk92WGE5SVk1UEJXLURvd0lva2ViWVgxZThyM0s2YVYxeXdQaHFZd2hPcTFhOTZITnE2eW5oT0tHa1dQU1ZFNFpNNkVUdnlBdkNqY3lWQmt0N2FacUhlM0NkY2VvQkY2ZG10WFZGTUs3WGx5Z1FtY3FDWTVGRFBXYjFWcUUxbmZ3N043OXhwQkZRWUxIRjl6WnJUYmFrTm5JLWwzMDRYeWQwZGlhSDNZOXRtaWFMdjZkRm5yeUk1bXoxSGFoS1lMMHRBODVrSXBLOGxmQi1sU3pSTGQ2WFZmMkhGM05BUE9oTGNKVTZtanJMQkEyZGlSUW5OcDNGVXpWUkswSHZUa2QxbnN3YXRpeUk5dExrcmp2T2VUZEdSb2JWLWJiTWtBcVBialJwYlNjd3FDMHVWNEZpeVREUHQwTnpBOThEZHlzS2F0ZndYQy1JNWxFdUdLTnJYX1dfS25hZG1iRjB0cXVZWU1obUVMdzh6Q3UzSl9xX1lOQU5TNDI1c1ZZZmVOUWE0SVZlMDE5WThfSEoyS3dE?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant",
+          "short_response": "水試所支持依科學證據推動蟳蟹繁殖期保育，並將持續資源調查與技術支援；查緝及裁罰由權責機關依法辦理。",
+          "detailed_response": "本則為 Yahoo 新聞轉載同一蟳蟹保育事件，已併入 c5 群組，避免將重複報導誤判為多個事件。報導重點涉及抱卵母蟹禁捕禁售、幼蟹尺寸限制與違規罰鍰；規範適用、查緝及裁罰仍由漁業署、海巡署及地方權責機關依法認定。水試所將持續以繁殖生物學、漁獲組成與資源量調查提供科學依據，並協助物種辨識、尺寸量測及產業宣導，使保育措施兼顧資源補充、漁業生計與市場溝通。"
+        },
+        {
+          "id": "n15",
+          "cluster_id": "c11",
+          "hours_ago": 7,
+          "published_at_note": "Google 新聞顯示約 7 小時前發布",
+          "priority": "高",
+          "source": "行政院公報資訊網",
+          "title": "農業天然災害低利貸款項目及額度",
+          "topic": "養殖韌性與災害金融",
+          "sentiment": "中性",
+          "url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032122/ch07/type3/gov88/num22/images/Eg01.pdf",
+          "short_response": "水試所關注養殖災損融資調整，將以災害調查、養殖韌性與復養技術支援產業；資格與額度依權責機關公告。",
+          "detailed_response": "行政院公報公布農業天然災害低利貸款項目及額度，正式資料明列魚塭養殖項目，包含鰻魚等類別。此類金融措施有助受災養殖戶恢復生產，但申請資格、災損認定、額度、利率與期限應以農業主管機關及承貸機構正式公告為準。水試所可從水質與設施受損評估、生物安全、種苗與健康管理、復養時程及氣候韌性技術提供科研支援，並配合漁業署、地方政府與金融執行單位協助技術資訊傳遞，降低復養風險。"
         }
       ]
     }
@@ -367,6 +401,11 @@
       "label": "Google 新聞：臺灣政府來源水產監測（24 小時）",
       "path": "news_snapshot.sql",
       "href": "https://news.google.com/search?q=site%3Agov.tw%20(%E6%BC%81%E6%A5%AD%20OR%20%E6%B0%B4%E7%94%A2%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF)%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+    },
+    {
+      "id": "gazette_aquaculture_disaster_loan",
+      "label": "行政院公報：農業天然災害低利貸款項目及額度",
+      "href": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032122/ch07/type3/gov88/num22/images/Eg01.pdf"
     }
   ]
 }
