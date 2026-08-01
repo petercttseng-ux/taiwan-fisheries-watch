@@ -5,7 +5,7 @@
     "surface": "dashboard",
     "title": "水產新聞與輿情監測儀表板",
     "description": "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
-    "generatedAt": "2026-08-01T12:29:59+08:00",
+    "generatedAt": "2026-08-01T12:43:30+08:00",
     "cards": [
       {
         "id": "card_mentions",
@@ -136,13 +136,18 @@
         "id": "gazette_aquaculture_disaster_loan",
         "label": "行政院公報：農業天然災害低利貸款項目及額度",
         "href": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032122/ch07/type3/gov88/num22/images/Eg01.pdf"
+      },
+      {
+        "id": "reuters_seafood_sustainability_claims",
+        "label": "Reuters：Amazon 水產品永續標示訴訟",
+        "href": "https://www.reuters.com/business/media-telecom/amazon-sued-by-consumers-over-seafood-sustainability-claims-2026-07-31/"
       }
     ],
     "blocks": [
       {
         "id": "intro",
         "type": "markdown",
-        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 12:29（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪新增 2 則：Yahoo 新聞轉載蟳蟹繁殖期保育報導，併入既有 c5 群組；行政院公報公布含魚塭養殖項目的農業天然災害低利貸款額度，新增 c11 政策事件。目前共 15 則新聞、11 個事件群組。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
+        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 12:43（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪新增 1 則：Reuters 報導美國消費者就 Amazon 水產品「dolphin safe」「sustainable」「wild caught」等永續標示提起訴訟，新增 c12 國際風險事件；本輪臺灣政府與媒體來源未見其他有效新事件。已排除徵才、音樂節、籃球活動及廢養殖池刑案等僅關鍵字命中內容。目前共 16 則新聞、12 個事件群組。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
       },
       {"id": "metrics", "type": "metric-strip", "cardIds": ["card_mentions", "card_clusters", "card_governance", "card_negative"]},
       {"id": "sentiment", "type": "chart", "chartId": "sentiment_chart", "layout": "half"},
@@ -159,16 +164,16 @@
   },
   "snapshot": {
     "version": 1,
-    "generatedAt": "2026-08-01T12:29:59+08:00",
+    "generatedAt": "2026-08-01T12:43:30+08:00",
     "status": "ready",
     "datasets": {
       "kpis": [
-        {"mentions": 15, "clusters": 11, "governance": 9, "negative": 2}
+        {"mentions": 16, "clusters": 12, "governance": 10, "negative": 3}
       ],
       "sentiment_summary": [
-        {"sentiment": "中性", "count": 8, "share_pct": 53.3},
-        {"sentiment": "正向", "count": 5, "share_pct": 33.3},
-        {"sentiment": "負向", "count": 2, "share_pct": 13.3}
+        {"sentiment": "中性", "count": 8, "share_pct": 50.0},
+        {"sentiment": "正向", "count": 5, "share_pct": 31.3},
+        {"sentiment": "負向", "count": 3, "share_pct": 18.8}
       ],
       "topic_summary": [
         {"topic": "資源保育規範", "count": 4},
@@ -180,7 +185,8 @@
         {"topic": "漁港設施與地方治理", "count": 1},
         {"topic": "地方創生與養殖轉型", "count": 1},
         {"topic": "漁村文化與人才培育", "count": 1},
-        {"topic": "養殖韌性與災害金融", "count": 1}
+        {"topic": "養殖韌性與災害金融", "count": 1},
+        {"topic": "水產品永續標示與追溯", "count": 1}
       ],
       "news_items": [
         {
@@ -380,6 +386,20 @@
           "url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032122/ch07/type3/gov88/num22/images/Eg01.pdf",
           "short_response": "水試所關注養殖災損融資調整，將以災害調查、養殖韌性與復養技術支援產業；資格與額度依權責機關公告。",
           "detailed_response": "行政院公報公布農業天然災害低利貸款項目及額度，正式資料明列魚塭養殖項目，包含鰻魚等類別。此類金融措施有助受災養殖戶恢復生產，但申請資格、災損認定、額度、利率與期限應以農業主管機關及承貸機構正式公告為準。水試所可從水質與設施受損評估、生物安全、種苗與健康管理、復養時程及氣候韌性技術提供科研支援，並配合漁業署、地方政府與金融執行單位協助技術資訊傳遞，降低復養風險。"
+        },
+        {
+          "id": "n16",
+          "cluster_id": "c12",
+          "hours_ago": 9,
+          "published_at_note": "Google 新聞顯示約 9 小時前發布；Reuters 頁面日期為 2026-07-31",
+          "priority": "中",
+          "source": "Reuters",
+          "title": "Amazon sued by consumers over seafood sustainability claims",
+          "topic": "水產品永續標示與追溯",
+          "sentiment": "負向",
+          "url": "https://www.reuters.com/business/media-telecom/amazon-sued-by-consumers-over-seafood-sustainability-claims-2026-07-31/",
+          "short_response": "水產品永續標示應有可驗證證據與完整追溯；本案責任由司法認定，水試所將持續強化鑑別與技術支援。",
+          "detailed_response": "Reuters 報導美國消費者針對 Amazon 銷售水產品所使用的「dolphin safe」「sustainable」「wild caught」等標示提起訴訟，指稱相關宣稱可能誤導。本案事實、標示是否違法及個案責任，應由美國法院與權責機關認定，水試所不作預判。對臺灣的參考在於，水產品永續宣稱宜建立於可稽核的漁獲或養殖來源、物種鑑別、供應鏈紀錄、第三方驗證與清楚標示。水試所可持續精進物種鑑定、產地與生產方式辨識、品質檢測及追溯技術，並配合漁業、食安與消費者保護權責機關，協助產業降低資訊落差與綠色宣稱風險。"
         }
       ]
     }
@@ -406,6 +426,11 @@
       "id": "gazette_aquaculture_disaster_loan",
       "label": "行政院公報：農業天然災害低利貸款項目及額度",
       "href": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032122/ch07/type3/gov88/num22/images/Eg01.pdf"
+    },
+    {
+      "id": "reuters_seafood_sustainability_claims",
+      "label": "Reuters：Amazon 水產品永續標示訴訟",
+      "href": "https://www.reuters.com/business/media-telecom/amazon-sued-by-consumers-over-seafood-sustainability-claims-2026-07-31/"
     }
   ]
 }
