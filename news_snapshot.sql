@@ -1,8 +1,8 @@
--- Browser-reviewed Google News snapshot rechecked 2026-08-01 12:09 Asia/Taipei; no new qualifying event found.
--- No new distinct aquatic/fisheries event was found after cluster review and relevance exclusions.
+-- Browser-reviewed Google News snapshot rechecked 2026-08-01 12:19 Asia/Taipei.
+-- One newly published Newtalk report was added to existing crab-conservation cluster c5.
 -- Primary query: https://news.google.com/search?q=(%E6%B0%B4%E7%94%A2%20OR%20%E6%BC%81%E6%A5%AD%E7%BD%B2%20OR%20%E6%B0%B4%E7%94%A2%E8%A9%A6%E9%A9%97%E6%89%80%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF%20OR%20%E6%B0%B4%E7%94%A2%E5%93%81%20OR%20%E6%BC%81%E6%9D%91%20OR%20%E6%B5%B7%E6%B4%8B%E4%BF%9D%E8%82%B2%20OR%20%E5%9C%8B%E9%9A%9B%E6%BC%81%E6%A5%AD)%20-%E8%85%90%E5%B1%8D%20-%E7%94%B7%E5%B1%8D%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant
 -- Government query: https://news.google.com/search?q=site%3Agov.tw%20(%E6%BC%81%E6%A5%AD%20OR%20%E6%B0%B4%E7%94%A2%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF)%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant
--- This self-contained SQLite query reproduces the twelve reviewed news rows used by artifact.json.
+-- This self-contained SQLite query reproduces the thirteen reviewed news rows used by artifact.json.
 WITH news_items(
   id, cluster_id, hours_ago, priority, source, title, topic, sentiment, url,
   short_response, detailed_response
@@ -19,6 +19,7 @@ WITH news_items(
 ('n9','c7',18,'中','TDN台灣生活新聞','揮別毛胚屋！民代爭取經費活化漁港空間','漁港設施與地方治理','中性','https://news.google.com/read/CBMiUEFVX3lxTE03WlgxeThyT0p1WnNiRC02UlVSSVdQeVF2X3RBTjJnS3pUUDVLM2lqQ2JjdTlwSmNBSUphWS1Xa2tNcUxiWkF6RFE1WThzUEtP?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant','漁港活化應優先維持作業與安全功能，兼顧冷鏈、防災、環境及公共使用；水試所可提供技術建議。','漁港空間活化若能改善產業服務與公共使用，具有地方發展效益；規劃仍應以漁業作業、安全及生產需求為優先，並納入卸魚動線、冷鏈衛生、防災韌性、廢棄物處理、能源效率與環境承載。水試所可在權責範圍內提供水產品保鮮、加工、養殖技術及環境監測等專業建議。由於目前可核實資訊主要為新聞標題，實際經費、設計內容與權責分工，仍應以地方政府及漁業主管機關正式資料為準。'),
   ('n10','c8',3,'中','udn女子漾／旅奇傳媒','從九孔池走向地方活化 返鄉十餘年的李勝興用一生守住貢寮的海洋未來','地方創生與養殖轉型','正向','https://woman.udn.com/woman/amp/story/123162/9657823','九孔池再利用結合地方創生與海洋教育值得關注；水試所可就養殖、生態承載與場域安全提供技術支持。','報導呈現返鄉者整建廢棄九孔養殖池、結合體驗旅遊與海洋保育的地方創生案例。水試所樂見既有養殖場域透過適當規劃重新創造公共與產業價值；再利用過程應先評估水質、結構安全、生態承載、生物安全、極端天候與廢棄物管理，並避免體驗活動干擾棲地或造成外來種風險。水試所可就九孔及相關水產養殖、健康管理、環境監測與科普內容提供技術交流，協助地方建立兼顧產業、教育與保育的長期營運模式。'),
   ('n11','c9',2,'中','自由時報','東港青年壯遊培訓外語導覽員推動漁村文化走向國際','漁村文化與人才培育','正向','https://news.google.com/read/CBMiZEFVX3lxTE1GVk42cjI2T1hCZmtsenVHS0g3bUs2UF9KeFhTLURjTlV2RWNteEtFZ044dXI0Z1I2RTZra0RVV0NQc1FzMWhfWlljazRwQXJxQzY2Z2RNbWtvSW52NTRmZHZGb24?hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant','漁村外語導覽培力有助產業文化國際溝通；水試所可提供科學內容與技術素材，提升導覽正確性。','報導標題顯示東港推動青年壯遊與外語導覽培訓，方向有助漁村文化、產業知識與國際旅客溝通。水試所可就漁業資源、養殖技術、水產品品質安全、海洋環境及氣候調適提供科學素材，並與地方政府、學校、漁會及社區協作，協助導覽內容兼具在地敘事與科學正確性。因本輪僅核實 Google 新聞標題與發布時間，課程內容、主辦單位及執行成效仍應以正式資料為準。'),
-  ('n12','c10',0,'高','INQUIRER.net','SC ruling weakens fight against illegal fishing, group warns','國際漁業治理','負向','https://newsinfo.inquirer.net/2275215/sc-ruling-weakens-fight-against-illegal-fishing-group-warns','菲律賓漁船監控裁決凸顯VMS與電子回報的重要；水試所支持以科學資料、追溯及風險溝通強化治理。','本案屬菲律賓司法與漁業治理範疇，水試所尊重當地法院及主管機關權責。報導指出，當地最高法院裁決使商業漁船強制監控與電子回報規定失效，保育團體憂心影響IUU漁撈查緝、近岸小規模漁民保障、漁獲追溯與海難定位。對臺灣的參考在於，船位監測、電子漁獲資料及資源評估需有清楚法源、資料治理與比例原則支持。水試所可持續提供資源量、漁獲與混獲、棲地及物種鑑定等科研資料，並配合漁業署與相關機關強化技術驗證及國際交流；制度適用仍由權責機關依法決定。')
+  ('n12','c10',0,'高','INQUIRER.net','SC ruling weakens fight against illegal fishing, group warns','國際漁業治理','負向','https://newsinfo.inquirer.net/2275215/sc-ruling-weakens-fight-against-illegal-fishing-group-warns','菲律賓漁船監控裁決凸顯VMS與電子回報的重要；水試所支持以科學資料、追溯及風險溝通強化治理。','本案屬菲律賓司法與漁業治理範疇，水試所尊重當地法院及主管機關權責。報導指出，當地最高法院裁決使商業漁船強制監控與電子回報規定失效，保育團體憂心影響IUU漁撈查緝、近岸小規模漁民保障、漁獲追溯與海難定位。對臺灣的參考在於，船位監測、電子漁獲資料及資源評估需有清楚法源、資料治理與比例原則支持。水試所可持續提供資源量、漁獲與混獲、棲地及物種鑑定等科研資料，並配合漁業署與相關機關強化技術驗證及國際交流；制度適用仍由權責機關依法決定。'),
+  ('n13','c5',0,'高','Newtalk新聞','秋蟹季別亂抓！漁業署今起嚴禁捕撈抱卵母蟹：違規最高重罰15萬元','資源保育規範','中性','https://newtalk.tw/news/view/2026-08-01/1050702','水試所支持依科學證據推動蟳蟹繁殖期保育，並將持續資源調查與技術支援；查緝及裁罰由權責機關依法辦理。','報導重申8月1日至12月31日禁止捕撈、販售或陳列抱卵母蟹，並列出多種蟳蟹最小甲殼尺寸；相關規範與裁罰仍以漁業署公告及權責機關認定為準。水試所支持以長期資源調查、繁殖生物學與漁獲組成分析評估管理成效，並可配合漁業署、海巡署、地方政府與學術單位提供物種辨識、尺寸量測、資源評估及產業宣導等技術支援。報導所述平均漁獲量回穩，仍宜持續觀察年度、海域與物種差異，避免僅以單一總量指標判定資源完全恢復。')
 )
 SELECT * FROM news_items ORDER BY hours_ago ASC;

@@ -5,7 +5,7 @@
     "surface": "dashboard",
     "title": "水產新聞與輿情監測儀表板",
     "description": "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
-    "generatedAt": "2026-08-01T12:09:58+08:00",
+    "generatedAt": "2026-08-01T12:19:58+08:00",
     "cards": [
       {
         "id": "card_mentions",
@@ -61,7 +61,7 @@
       {
         "id": "topic_chart",
         "title": "議題分布",
-        "subtitle": "石蚵推廣與保育規範各有同一事件的多篇報導，新聞則數因此高於事件群組數。",
+        "subtitle": "蟳蟹保育規範與石蚵推廣各有同一事件的多篇報導，新聞則數因此高於事件群組數。",
         "type": "horizontalBar",
         "intent": "comparison",
         "dataset": "topic_summary",
@@ -137,7 +137,7 @@
       {
         "id": "intro",
         "type": "markdown",
-        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 12:09（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪以綜合關鍵字及臺灣政府來源再次檢索最近 24 小時內容，未發現可與既有事件區隔的新水產新聞；目前維持 12 則新聞、10 個事件群組。已排除僅因地名、活動或一般農業關鍵字命中但與水產產業無直接關聯的結果。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
+        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 12:19（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪新增 1 則 Newtalk 蟳蟹繁殖期保育報導，經事件比對後併入既有 c5 群組；目前共 13 則新聞、10 個事件群組。已排除僅因地名、活動或一般農業關鍵字命中但與水產產業無直接關聯的結果。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
       },
       {"id": "metrics", "type": "metric-strip", "cardIds": ["card_mentions", "card_clusters", "card_governance", "card_negative"]},
       {"id": "sentiment", "type": "chart", "chartId": "sentiment_chart", "layout": "half"},
@@ -154,19 +154,19 @@
   },
   "snapshot": {
     "version": 1,
-    "generatedAt": "2026-08-01T12:09:58+08:00",
+    "generatedAt": "2026-08-01T12:19:58+08:00",
     "status": "ready",
     "datasets": {
       "kpis": [
-        {"mentions": 12, "clusters": 10, "governance": 6, "negative": 2}
+        {"mentions": 13, "clusters": 10, "governance": 7, "negative": 2}
       ],
       "sentiment_summary": [
-        {"sentiment": "中性", "count": 5, "share_pct": 41.7},
-        {"sentiment": "正向", "count": 5, "share_pct": 41.7},
-        {"sentiment": "負向", "count": 2, "share_pct": 16.7}
+        {"sentiment": "中性", "count": 6, "share_pct": 46.2},
+        {"sentiment": "正向", "count": 5, "share_pct": 38.5},
+        {"sentiment": "負向", "count": 2, "share_pct": 15.4}
       ],
       "topic_summary": [
-        {"topic": "資源保育規範", "count": 2},
+        {"topic": "資源保育規範", "count": 3},
         {"topic": "國際漁業治理", "count": 2},
         {"topic": "消費市場", "count": 1},
         {"topic": "漁獲執法", "count": 1},
@@ -332,6 +332,20 @@
           "url": "https://newsinfo.inquirer.net/2275215/sc-ruling-weakens-fight-against-illegal-fishing-group-warns",
           "short_response": "菲律賓漁船監控裁決凸顯VMS與電子回報的重要；水試所支持以科學資料、追溯及風險溝通強化治理。",
           "detailed_response": "本案屬菲律賓司法與漁業治理範疇，水試所尊重當地法院及主管機關權責。報導指出，當地最高法院裁決使商業漁船強制監控與電子回報規定失效，保育團體憂心影響IUU漁撈查緝、近岸小規模漁民保障、漁獲追溯與海難定位。對臺灣的參考在於，船位監測、電子漁獲資料及資源評估需有清楚法源、資料治理與比例原則支持。水試所可持續提供資源量、漁獲與混獲、棲地及物種鑑定等科研資料，並配合漁業署與相關機關強化技術驗證及國際交流；制度適用仍由權責機關依法決定。"
+        },
+        {
+          "id": "n13",
+          "cluster_id": "c5",
+          "hours_ago": 0,
+          "published_at": "2026-08-01T12:13:00+08:00",
+          "priority": "高",
+          "source": "Newtalk新聞",
+          "title": "秋蟹季別亂抓！漁業署今起嚴禁捕撈抱卵母蟹：違規最高重罰15萬元",
+          "topic": "資源保育規範",
+          "sentiment": "中性",
+          "url": "https://newtalk.tw/news/view/2026-08-01/1050702",
+          "short_response": "水試所支持依科學證據推動蟳蟹繁殖期保育，並將持續資源調查與技術支援；查緝及裁罰由權責機關依法辦理。",
+          "detailed_response": "報導重申8月1日至12月31日禁止捕撈、販售或陳列抱卵母蟹，並列出多種蟳蟹最小甲殼尺寸；相關規範與裁罰仍以漁業署公告及權責機關認定為準。水試所支持以長期資源調查、繁殖生物學與漁獲組成分析評估管理成效，並可配合漁業署、海巡署、地方政府與學術單位提供物種辨識、尺寸量測、資源評估及產業宣導等技術支援。報導所述平均漁獲量回穩，仍宜持續觀察年度、海域與物種差異，避免僅以單一總量指標判定資源完全恢復。"
         }
       ]
     }
