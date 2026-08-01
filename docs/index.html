@@ -1,0 +1,322 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="最近24小時水產新聞、漁業政策與公開輿情監測"><title>水產新聞與輿情監測儀表板</title><style>
+:root {
+  --ink: #102a2c;
+  --muted: #657c7d;
+  --line: #d7e3df;
+  --paper: #f4f7f3;
+  --card: #ffffff;
+  --ocean: #0b6766;
+  --ocean-dark: #084b4b;
+  --aqua: #66c5bd;
+  --foam: #dff5ef;
+  --lime: #a9cf78;
+  --sand: #dcae68;
+  --coral: #d96658;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+button, input, select { font: inherit; }
+a { color: inherit; }
+main { min-height: 100vh; overflow: hidden; }
+
+.site-header {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(16, 42, 44, .12);
+}
+.brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 800; letter-spacing: .03em; }
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 50% 50% 44% 56%;
+  display: grid; place-items: center; color: white; background: var(--ocean);
+  box-shadow: inset 0 -5px 0 rgba(0,0,0,.08); font-family: serif; font-size: 19px;
+}
+.header-meta { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 13px; font-weight: 700; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #58a869; box-shadow: 0 0 0 4px rgba(88,168,105,.14); }
+.meta-divider { width: 1px; height: 16px; background: var(--line); margin: 0 4px; }
+
+.hero {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto; padding: 78px 0 64px;
+  display: grid; grid-template-columns: 1.18fr .82fr; gap: 72px; align-items: center;
+  position: relative;
+}
+.hero::before {
+  content: ""; position: absolute; width: 560px; height: 560px; right: -260px; top: -170px;
+  border: 1px solid rgba(11,103,102,.12); border-radius: 50%; box-shadow: 0 0 0 72px rgba(11,103,102,.035), 0 0 0 144px rgba(11,103,102,.02); pointer-events: none;
+}
+.eyebrow, .section-kicker { margin: 0 0 14px; color: var(--ocean); font-size: 12px; font-weight: 900; letter-spacing: .16em; }
+.hero h1 { margin: 0; font-size: clamp(46px, 5.4vw, 76px); line-height: 1.06; letter-spacing: -.055em; font-weight: 950; }
+.hero h1 span { color: var(--ocean); }
+.hero-description { max-width: 670px; margin: 28px 0; color: #536b6c; font-size: 17px; line-height: 1.9; }
+.freshness { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: 12px; text-transform: uppercase; }
+.freshness strong { color: var(--ink); border-left: 2px solid var(--aqua); padding-left: 14px; font-family: ui-monospace, monospace; letter-spacing: .03em; }
+
+.signal-card {
+  min-height: 360px; padding: 34px; border-radius: 4px; background: var(--ocean-dark); color: white;
+  position: relative; overflow: hidden; box-shadow: 0 28px 70px rgba(8,75,75,.24);
+}
+.signal-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 90% 10%, rgba(102,197,189,.25), transparent 34%); }
+.signal-card > * { position: relative; z-index: 1; }
+.signal-topline { display: flex; justify-content: space-between; color: #b8d9d5; font-size: 12px; font-weight: 700; }
+.live-pill { display: flex; align-items: center; gap: 8px; color: #e7fff8; letter-spacing: .08em; }
+.live-pill i { width: 7px; height: 7px; border-radius: 50%; background: #a9df8d; box-shadow: 0 0 0 5px rgba(169,223,141,.12); }
+.signal-source { margin: 46px 0 12px; color: #84c8c0; font-size: 12px; font-weight: 800; letter-spacing: .05em; }
+.signal-card h2 { margin: 0; font-size: 24px; line-height: 1.5; letter-spacing: -.02em; }
+.signal-card > p:last-of-type { color: #c4dcda; line-height: 1.75; font-size: 14px; }
+.signal-card a { display: inline-flex; margin-top: 12px; color: white; text-underline-offset: 5px; font-size: 13px; font-weight: 800; }
+.signal-grid { position: absolute; right: -22px; bottom: -30px; display: grid; grid-template-columns: repeat(3, 48px); gap: 8px; opacity: .12; transform: rotate(-8deg); }
+.signal-grid span { width: 48px; height: 48px; border: 1px solid white; border-radius: 50%; }
+
+.metric-grid { width: min(1240px, calc(100% - 48px)); margin: 0 auto 28px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.metric-card { padding: 24px; background: var(--card); border: 1px solid var(--line); display: flex; gap: 18px; align-items: center; min-height: 142px; }
+.metric-icon { width: 44px; height: 44px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; background: var(--foam); color: var(--ocean); font-size: 20px; font-weight: 900; }
+.metric-card > div:last-child { display: grid; grid-template-columns: auto auto; align-items: end; column-gap: 12px; }
+.metric-card span { grid-column: 1 / -1; color: var(--muted); font-size: 13px; font-weight: 700; }
+.metric-card strong { font-size: 38px; line-height: 1; font-family: ui-monospace, monospace; }
+.metric-card small { color: var(--muted); font-size: 11px; margin-bottom: 3px; white-space: nowrap; }
+.risk-card .metric-icon { background: #f9e4df; color: var(--coral); }
+
+.analytics-grid { width: min(1240px, calc(100% - 48px)); margin: 0 auto 78px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 14px; }
+.panel { background: white; border: 1px solid var(--line); padding: 28px; }
+.panel-heading { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 26px; }
+.panel-heading h2, .section-title-row h2 { margin: 0; font-size: 22px; letter-spacing: -.03em; }
+.panel-heading > span { color: var(--muted); font-size: 11px; background: #f0f5f2; padding: 6px 9px; }
+.sentiment-content { display: grid; grid-template-columns: 180px 1fr; gap: 34px; align-items: center; }
+.donut { width: 168px; height: 168px; border-radius: 50%; background: conic-gradient(var(--aqua) 0 41.7%, var(--lime) 41.7% 83.4%, var(--coral) 83.4% 100%); display: grid; place-items: center; }
+.donut::before { content: ""; width: 112px; height: 112px; border-radius: 50%; background: white; }
+.donut > div { position: absolute; display: grid; text-align: center; }
+.donut strong { font: 800 30px ui-monospace, monospace; }
+.donut span { color: var(--muted); font-size: 11px; }
+.legend { display: grid; gap: 12px; }
+.legend > div { display: grid; grid-template-columns: 10px 1fr auto; gap: 10px; align-items: center; padding-bottom: 11px; border-bottom: 1px solid #edf1ef; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+.legend-dot.neutral { background: var(--aqua); } .legend-dot.positive { background: var(--lime); } .legend-dot.negative { background: var(--coral); }
+.legend p { margin: 0; font-size: 13px; font-weight: 800; }
+.legend small { display: block; color: var(--muted); font-weight: 500; font-size: 10px; margin-top: 2px; }
+.legend strong { font: 700 13px ui-monospace, monospace; }
+.topic-bars { display: grid; gap: 13px; }
+.topic-row { display: grid; grid-template-columns: 28px minmax(130px, 1.6fr) 2fr 22px; gap: 12px; align-items: center; font-size: 12px; }
+.topic-rank { color: #a5b2b0; font: 600 10px ui-monospace, monospace; }
+.topic-name { color: #445c5c; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar-track { height: 7px; background: #edf2ef; overflow: hidden; }
+.bar-track i { display: block; height: 100%; background: linear-gradient(90deg, var(--ocean), var(--aqua)); }
+.topic-row strong { font: 700 12px ui-monospace, monospace; }
+
+.news-section { width: min(1240px, calc(100% - 48px)); margin: 0 auto 60px; }
+.section-title-row { display: flex; align-items: end; justify-content: space-between; margin-bottom: 22px; }
+.section-title-row > p { color: var(--muted); font-size: 12px; }
+.section-title-row > p strong { color: var(--ocean); font: 800 14px ui-monospace, monospace; }
+.filters { display: grid; grid-template-columns: minmax(260px, 1fr) 130px 130px 220px auto; gap: 10px; margin-bottom: 20px; }
+.filters label { min-height: 50px; padding: 7px 12px; background: white; border: 1px solid var(--line); display: grid; align-content: center; }
+.filters label > span { color: var(--muted); font-size: 9px; font-weight: 800; letter-spacing: .08em; }
+.filters input, .filters select { width: 100%; border: 0; outline: 0; color: var(--ink); background: transparent; font-size: 12px; }
+.search-field { grid-template-columns: 22px 1fr; align-items: center; }
+.search-field > span { grid-row: 1; font-size: 20px !important; color: var(--ocean) !important; }
+.search-field input { grid-column: 2; grid-row: 1; }
+.filters button, .empty-state button { border: 1px solid var(--ocean); background: transparent; color: var(--ocean); padding: 0 18px; font-size: 12px; font-weight: 800; cursor: pointer; }
+.filters button:hover, .empty-state button:hover { background: var(--ocean); color: white; }
+
+.news-list { display: grid; gap: 10px; }
+.news-card { background: white; border: 1px solid var(--line); display: grid; grid-template-columns: 118px 1fr 44px; position: relative; transition: transform .2s ease, box-shadow .2s ease; }
+.news-card:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(26,77,75,.08); }
+.news-card-side { border-right: 1px solid var(--line); padding: 24px 20px 24px 26px; position: relative; display: flex; align-items: flex-start; }
+.priority-rail { position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--aqua); }
+.priority-rail.high { background: var(--coral); } .priority-rail.medium { background: var(--sand); } .priority-rail.low { background: var(--aqua); }
+.news-card-side div { display: grid; gap: 9px; }
+.cluster-label { color: var(--ocean); font: 800 11px ui-monospace, monospace; letter-spacing: .08em; }
+.news-card-side strong { color: var(--muted); font-size: 11px; }
+.news-card-body { padding: 24px 28px 20px; }
+.badge-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 13px; }
+.badge { padding: 4px 7px; border-radius: 2px; font-size: 9px; font-weight: 900; letter-spacing: .04em; }
+.sentiment-positive { color: #4a7239; background: #e9f3df; } .sentiment-neutral { color: #326f6b; background: #e2f2ef; } .sentiment-negative { color: #9a4338; background: #f9e4df; }
+.priority-high { color: #9a4338; border: 1px solid #e7b5ad; } .priority-medium { color: #846028; border: 1px solid #e0c493; } .priority-low { color: #326f6b; border: 1px solid #a7d4cf; }
+.topic-badge { color: var(--muted); background: #eef2ef; }
+.news-source { margin: 0 0 4px; color: var(--muted); font-size: 11px; font-weight: 700; }
+.news-card h3 { margin: 0 50px 16px 0; font-size: 18px; line-height: 1.5; letter-spacing: -.02em; }
+.news-card h3 a { text-decoration: none; } .news-card h3 a:hover { color: var(--ocean); text-decoration: underline; text-underline-offset: 4px; }
+.response-short { padding: 15px 17px; background: #f1f7f4; border-left: 3px solid var(--aqua); }
+.response-short span { color: var(--ocean); font-size: 10px; font-weight: 900; letter-spacing: .05em; }
+.response-short p { margin: 6px 0 0; color: #425c5d; font-size: 13px; line-height: 1.75; }
+details { margin-top: 13px; }
+summary { list-style: none; cursor: pointer; color: var(--ocean); font-size: 11px; font-weight: 900; display: flex; justify-content: space-between; }
+summary::-webkit-details-marker { display: none; }
+details[open] summary span { transform: rotate(45deg); }
+.detail-response { margin-top: 12px; padding: 16px 18px; border: 1px solid var(--line); color: #52696a; font-size: 12px; line-height: 1.85; }
+.detail-response p { margin: 0; }
+.authority-note { margin-top: 12px !important; padding-top: 11px; border-top: 1px dashed var(--line); color: #8a5f2f; font-weight: 700; }
+.source-link { align-self: start; justify-self: center; margin-top: 24px; width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; text-decoration: none; color: var(--ocean); font-weight: 900; }
+.source-link:hover { color: white; background: var(--ocean); border-color: var(--ocean); }
+.empty-state { padding: 60px 20px; text-align: center; background: white; border: 1px dashed #b8c8c4; }
+.empty-state strong { font-size: 18px; } .empty-state p { color: var(--muted); font-size: 13px; } .empty-state button { min-height: 42px; }
+
+.notice-panel { width: min(1240px, calc(100% - 48px)); margin: 0 auto 70px; display: flex; gap: 18px; padding: 24px 28px; border: 1px solid #bedbd5; background: var(--foam); }
+.notice-symbol { width: 30px; height: 30px; border: 1px solid var(--ocean); border-radius: 50%; display: grid; place-items: center; color: var(--ocean); font: 800 14px serif; flex: 0 0 auto; }
+.notice-panel h2 { margin: 2px 0 7px; font-size: 14px; }
+.notice-panel p { margin: 0; color: #4f6a69; font-size: 12px; line-height: 1.8; }
+footer { border-top: 1px solid var(--line); min-height: 116px; padding: 28px max(24px, calc((100vw - 1240px) / 2)); display: grid; grid-template-columns: 1fr auto; align-items: center; column-gap: 20px; color: var(--muted); font-size: 10px; }
+.footer-brand { color: var(--ink); grid-row: 1 / 3; }
+.footer-brand .brand-mark { width: 30px; height: 30px; font-size: 14px; }
+footer p { margin: 3px 0; text-align: right; }
+
+@media (max-width: 980px) {
+  .hero { grid-template-columns: 1fr; gap: 38px; padding-top: 54px; }
+  .signal-card { min-height: 310px; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .analytics-grid { grid-template-columns: 1fr; }
+  .filters { grid-template-columns: 1fr 1fr 1fr; }
+  .search-field { grid-column: 1 / -1; }
+  .topic-filter { grid-column: 1 / 3; }
+}
+
+@media (max-width: 640px) {
+  .site-header, .hero, .metric-grid, .analytics-grid, .news-section, .notice-panel { width: min(100% - 28px, 1240px); }
+  .site-header { min-height: 66px; } .brand > span:last-child { font-size: 13px; }
+  .header-meta { font-size: 0; } .header-meta::after { content: "已驗證"; font-size: 11px; } .meta-divider { display: none; }
+  .hero { padding: 46px 0; }
+  .hero h1 { font-size: 43px; }
+  .hero-description { font-size: 15px; line-height: 1.75; }
+  .signal-card { padding: 26px; }
+  .signal-card h2 { font-size: 20px; }
+  .metric-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .metric-card { padding: 17px 14px; min-height: 120px; gap: 11px; }
+  .metric-icon { width: 34px; height: 34px; }
+  .metric-card strong { font-size: 30px; }
+  .metric-card small { display: none; }
+  .panel { padding: 22px 18px; }
+  .sentiment-content { grid-template-columns: 1fr; justify-items: center; }
+  .legend { width: 100%; }
+  .topic-row { grid-template-columns: 24px minmax(95px, 1.3fr) 1fr 20px; gap: 8px; }
+  .filters { grid-template-columns: 1fr 1fr; }
+  .search-field, .topic-filter { grid-column: 1 / -1; }
+  .filters button { min-height: 50px; }
+  .news-card { grid-template-columns: 1fr 38px; }
+  .news-card-side { grid-column: 1 / -1; border-right: 0; border-bottom: 1px solid var(--line); padding: 12px 20px; }
+  .news-card-side div { width: 100%; display: flex; justify-content: space-between; }
+  .news-card-body { padding: 20px; }
+  .news-card h3 { margin-right: 0; font-size: 16px; }
+  .source-link { grid-column: 2; grid-row: 2; margin-top: 20px; }
+  .section-title-row { align-items: flex-start; }
+  .section-title-row h2 { font-size: 20px; }
+  footer { grid-template-columns: 1fr; text-align: left; }
+  .footer-brand { grid-row: auto; margin-bottom: 10px; }
+  footer p { text-align: left; }
+}
+</style></head><body><main>
+<header class="site-header"><a class="brand" href="#top" aria-label="回到頁首"><span class="brand-mark">水</span><span>水產科技情報站</span></a><div class="header-meta"><span class="status-dot"></span>已驗證快照<span class="meta-divider"></span>10 分鐘更新</div></header>
+<section class="hero" id="top"><div class="hero-copy"><p class="eyebrow">FISHERIES INTELLIGENCE · TAIWAN</p><h1>水產新聞與<br><span>輿情監測儀表板</span></h1><p class="hero-description">彙整最近 24 小時水產、漁業、養殖、食安、資源保育與國際治理動態，並以水產試驗所科研及技術推廣立場提供回應建議。</p><div class="freshness"><span>最後監測</span><strong>2026 / 08 / 01　11:36</strong><span>Asia / Taipei</span></div></div>
+<aside class="signal-card"><div class="signal-topline"><span class="live-pill"><i></i>最新高優先</span><span>1 小時內</span></div><p class="signal-source">INQUIRER.net · 國際漁業治理</p><h2>SC ruling weakens fight against illegal fishing, group warns</h2><p>菲律賓漁船監控裁決凸顯VMS與電子回報的重要；水試所支持以科學資料、追溯及風險溝通強化治理。</p><a href="https://newsinfo.inquirer.net/2275215/sc-ruling-weakens-fight-against-illegal-fishing-group-warns" target="_blank" rel="noreferrer">查看原始報導 ↗</a><div class="signal-grid"><span></span><span></span><span></span><span></span><span></span><span></span></div></aside></section>
+<section class="metric-grid"><article class="metric-card"><div class="metric-icon">◎</div><div><span>有效新聞</span><strong>12</strong><small>最近 24 小時</small></div></article><article class="metric-card"><div class="metric-icon">◫</div><div><span>事件群組</span><strong>10</strong><small>重複報導已歸群</small></div></article><article class="metric-card"><div class="metric-icon">⌁</div><div><span>治理與保育</span><strong>6</strong><small>需政策溝通</small></div></article><article class="metric-card risk-card"><div class="metric-icon">!</div><div><span>負向訊號</span><strong>2</strong><small>需持續追蹤</small></div></article></section>
+<section class="analytics-grid"><article class="panel sentiment-panel"><div class="panel-heading"><div><p class="section-kicker">SENTIMENT</p><h2>新聞情緒分布</h2></div><span>共 12 則</span></div><div class="sentiment-content"><div class="donut" role="img" aria-label="新聞情緒比例"><div><strong>12</strong><span>則新聞</span></div></div><div class="legend"><div><span class="legend-dot neutral"></span><p>中性<small>5 則</small></p><strong>41.7%</strong></div><div><span class="legend-dot positive"></span><p>正向<small>5 則</small></p><strong>41.7%</strong></div><div><span class="legend-dot negative"></span><p>負向<small>2 則</small></p><strong>16.7%</strong></div></div></div></article><article class="panel topic-panel"><div class="panel-heading"><div><p class="section-kicker">TOPICS</p><h2>議題分布</h2></div><span>9 類議題</span></div><div class="topic-bars"><div class="topic-row"><span class="topic-rank">01</span><span class="topic-name">資源保育規範</span><div class="bar-track"><i style="width:100%"></i></div><strong>2</strong></div><div class="topic-row"><span class="topic-rank">02</span><span class="topic-name">國際漁業治理</span><div class="bar-track"><i style="width:100%"></i></div><strong>2</strong></div><div class="topic-row"><span class="topic-rank">03</span><span class="topic-name">漁村體驗推廣</span><div class="bar-track"><i style="width:100%"></i></div><strong>2</strong></div><div class="topic-row"><span class="topic-rank">04</span><span class="topic-name">消費市場</span><div class="bar-track"><i style="width:50%"></i></div><strong>1</strong></div><div class="topic-row"><span class="topic-rank">05</span><span class="topic-name">漁獲執法</span><div class="bar-track"><i style="width:50%"></i></div><strong>1</strong></div><div class="topic-row"><span class="topic-rank">06</span><span class="topic-name">養殖市場與食安溝通</span><div class="bar-track"><i style="width:50%"></i></div><strong>1</strong></div><div class="topic-row"><span class="topic-rank">07</span><span class="topic-name">漁港設施與地方治理</span><div class="bar-track"><i style="width:50%"></i></div><strong>1</strong></div><div class="topic-row"><span class="topic-rank">08</span><span class="topic-name">地方創生與養殖轉型</span><div class="bar-track"><i style="width:50%"></i></div><strong>1</strong></div><div class="topic-row"><span class="topic-rank">09</span><span class="topic-name">漁村文化與人才培育</span><div class="bar-track"><i style="width:50%"></i></div><strong>1</strong></div></div></article></section>
+<section class="news-section" id="news"><div class="section-title-row"><div><p class="section-kicker">MONITORING FEED</p><h2>新聞與建議回應</h2></div><p>顯示 <strong id="result-count">12</strong> / 12 則</p></div>
+<div class="filters"><label class="search-field"><span>⌕</span><input id="query" placeholder="搜尋標題、來源、議題或回應…"></label><label><span>情緒</span><select id="sentiment"><option>全部</option><option>正向</option><option>中性</option><option>負向</option></select></label><label><span>優先級</span><select id="priority"><option>全部</option><option>高</option><option>中</option><option>低</option></select></label><label class="topic-filter"><span>議題</span><select id="topic"><option>全部</option><option>資源保育規範</option><option>國際漁業治理</option><option>漁村體驗推廣</option><option>消費市場</option><option>漁獲執法</option><option>養殖市場與食安溝通</option><option>漁港設施與地方治理</option><option>地方創生與養殖轉型</option><option>漁村文化與人才培育</option></select></label><button type="button" id="reset">重設</button></div>
+<div class="news-list" id="news-list"><article class="news-card" data-sentiment="負向" data-priority="高" data-topic="國際漁業治理" data-search="sc ruling weakens fight against illegal fishing, group warns inquirer.net 國際漁業治理 菲律賓漁船監控裁決凸顯vms與電子回報的重要；水試所支持以科學資料、追溯及風險溝通強化治理。">
+    <div class="news-card-side"><span class="priority-rail high"></span><div><span class="cluster-label">C10</span><strong>1 小時內</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-negative">負向</span><span class="badge priority-high">高優先</span><span class="badge topic-badge">國際漁業治理</span></div>
+      <p class="news-source">INQUIRER.net</p><h3><a href="https://newsinfo.inquirer.net/2275215/sc-ruling-weakens-fight-against-illegal-fishing-group-warns" target="_blank" rel="noreferrer">SC ruling weakens fight against illegal fishing, group warns</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>菲律賓漁船監控裁決凸顯VMS與電子回報的重要；水試所支持以科學資料、追溯及風險溝通強化治理。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>本案屬菲律賓司法與漁業治理範疇，水試所尊重當地法院及主管機關權責。報導指出，當地最高法院裁決使商業漁船強制監控與電子回報規定失效，保育團體憂心影響IUU漁撈查緝、近岸小規模漁民保障、漁獲追溯與海難定位。對臺灣的參考在於，船位監測、電子漁獲資料及資源評估需有清楚法源、資料治理與比例原則支持。水試所可持續提供資源量、漁獲與混獲、棲地及物種鑑定等科研資料，並配合漁業署與相關機關強化技術驗證及國際交流；制度適用仍由權責機關依法決定。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://newsinfo.inquirer.net/2275215/sc-ruling-weakens-fight-against-illegal-fishing-group-warns" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="中性" data-priority="高" data-topic="養殖市場與食安溝通" data-search="從洗腎魚變身壽司主角！一條巴沙魚逆襲全球漁市 esg遠見 養殖市場與食安溝通 巴沙魚議題應回到檢驗與追溯證據；水試所將持續推動養殖、加工與品質研究，協助消費者辨識資訊。">
+    <div class="news-card-side"><span class="priority-rail high"></span><div><span class="cluster-label">C6</span><strong>2 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-neutral">中性</span><span class="badge priority-high">高優先</span><span class="badge topic-badge">養殖市場與食安溝通</span></div>
+      <p class="news-source">ESG遠見</p><h3><a href="https://esg.gvm.com.tw/article/94734" target="_blank" rel="noreferrer">從洗腎魚變身壽司主角！一條巴沙魚逆襲全球漁市</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>巴沙魚議題應回到檢驗與追溯證據；水試所將持續推動養殖、加工與品質研究，協助消費者辨識資訊。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>以「洗腎魚」等標籤概括巴沙魚，容易造成污名與錯誤風險認知。報導引述食藥署資料指出，輸入水產品會接受重金屬、動物用藥及食品添加物抽驗，近期越南巴沙魚未見邊境檢驗不合格紀錄；個別產品安全仍應以主管機關檢驗、來源追溯與標示為準。水試所將持續投入養殖環境、魚種鑑別、加工保鮮與品質技術研究，協助產業提升透明度。面對氣候變遷與白肉魚供應結構改變，也應同步評估生產效率、環境承載、用藥管理與市場韌性。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://esg.gvm.com.tw/article/94734" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="正向" data-priority="中" data-topic="漁村文化與人才培育" data-search="東港青年壯遊培訓外語導覽員推動漁村文化走向國際 自由時報 漁村文化與人才培育 漁村外語導覽培力有助產業文化國際溝通；水試所可提供科學內容與技術素材，提升導覽正確性。">
+    <div class="news-card-side"><span class="priority-rail medium"></span><div><span class="cluster-label">C9</span><strong>2 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-positive">正向</span><span class="badge priority-medium">中優先</span><span class="badge topic-badge">漁村文化與人才培育</span></div>
+      <p class="news-source">自由時報</p><h3><a href="https://news.google.com/read/CBMiZEFVX3lxTE1GVk42cjI2T1hCZmtsenVHS0g3bUs2UF9KeFhTLURjTlV2RWNteEtFZ044dXI0Z1I2RTZra0RVV0NQc1FzMWhfWlljazRwQXJxQzY2Z2RNbWtvSW52NTRmZHZGb24?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer">東港青年壯遊培訓外語導覽員推動漁村文化走向國際</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>漁村外語導覽培力有助產業文化國際溝通；水試所可提供科學內容與技術素材，提升導覽正確性。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>報導標題顯示東港推動青年壯遊與外語導覽培訓，方向有助漁村文化、產業知識與國際旅客溝通。水試所可就漁業資源、養殖技術、水產品品質安全、海洋環境及氣候調適提供科學素材，並與地方政府、學校、漁會及社區協作，協助導覽內容兼具在地敘事與科學正確性。因本輪僅核實 Google 新聞標題與發布時間，課程內容、主辦單位及執行成效仍應以正式資料為準。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://news.google.com/read/CBMiZEFVX3lxTE1GVk42cjI2T1hCZmtsenVHS0g3bUs2UF9KeFhTLURjTlV2RWNteEtFZ044dXI0Z1I2RTZra0RVV0NQc1FzMWhfWlljazRwQXJxQzY2Z2RNbWtvSW52NTRmZHZGb24?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="正向" data-priority="中" data-topic="地方創生與養殖轉型" data-search="從九孔池走向地方活化 返鄉十餘年的李勝興用一生守住貢寮的海洋未來 udn女子漾／旅奇傳媒 地方創生與養殖轉型 九孔池再利用結合地方創生與海洋教育值得關注；水試所可就養殖、生態承載與場域安全提供技術支持。">
+    <div class="news-card-side"><span class="priority-rail medium"></span><div><span class="cluster-label">C8</span><strong>3 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-positive">正向</span><span class="badge priority-medium">中優先</span><span class="badge topic-badge">地方創生與養殖轉型</span></div>
+      <p class="news-source">udn女子漾／旅奇傳媒</p><h3><a href="https://woman.udn.com/woman/amp/story/123162/9657823" target="_blank" rel="noreferrer">從九孔池走向地方活化 返鄉十餘年的李勝興用一生守住貢寮的海洋未來</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>九孔池再利用結合地方創生與海洋教育值得關注；水試所可就養殖、生態承載與場域安全提供技術支持。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>報導呈現返鄉者整建廢棄九孔養殖池、結合體驗旅遊與海洋保育的地方創生案例。水試所樂見既有養殖場域透過適當規劃重新創造公共與產業價值；再利用過程應先評估水質、結構安全、生態承載、生物安全、極端天候與廢棄物管理，並避免體驗活動干擾棲地或造成外來種風險。水試所可就九孔及相關水產養殖、健康管理、環境監測與科普內容提供技術交流，協助地方建立兼顧產業、教育與保育的長期營運模式。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://woman.udn.com/woman/amp/story/123162/9657823" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="正向" data-priority="低" data-topic="漁村體驗推廣" data-search="跟著海風趣蚵田！漁村體驗報名中 蕃新聞 漁村體驗推廣 樂見漁村體驗增進民眾理解養殖環境；水試所將持續以科普與技術推廣，深化永續養蚵及食魚教育。">
+    <div class="news-card-side"><span class="priority-rail low"></span><div><span class="cluster-label">C1</span><strong>4 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-positive">正向</span><span class="badge priority-low">低優先</span><span class="badge topic-badge">漁村體驗推廣</span></div>
+      <p class="news-source">蕃新聞</p><h3><a href="https://news.google.com/read/CBMiUkFVX3lxTE9qNndRZFRhSlM1SW8yWk4xOVgzUm80MVhjOUh1YzFxM2NzNG1pdVBiMnVtLUtXbVpJMlA5Q2xyMEJXM2lVa1RYZVFCQmJaVE9IOGc?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer">跟著海風趣蚵田！漁村體驗報名中</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>樂見漁村體驗增進民眾理解養殖環境；水試所將持續以科普與技術推廣，深化永續養蚵及食魚教育。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>水試所樂見以蚵田體驗連結漁村文化、養殖知識與消費者教育。此類活動若能同步說明牡蠣生態、養殖環境承載、產品衛生、氣候風險與廢棄蚵架管理，可讓民眾更完整理解產業。水試所將持續提供科學資料與養殖技術，並與地方政府、漁會及產業團體合作推廣負責任養殖與食魚教育。活動執行仍應兼顧場域安全、生物安全及環境維護。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://news.google.com/read/CBMiUkFVX3lxTE9qNndRZFRhSlM1SW8yWk4xOVgzUm80MVhjOUh1YzFxM2NzNG1pdVBiMnVtLUtXbVpJMlA5Q2xyMEJXM2lVa1RYZVFCQmJaVE9IOGc?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="負向" data-priority="中" data-topic="漁獲執法" data-search="卑詩男子非法持有珍貴漁獲 被罰款5500元禁釣一年 星島加拿大 漁獲執法 海外違法漁獲案件顯示科學配額、物種辨識與可追溯管理的重要；水試所將持續強化保育研究與技術支援。">
+    <div class="news-card-side"><span class="priority-rail medium"></span><div><span class="cluster-label">C2</span><strong>5 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-negative">負向</span><span class="badge priority-medium">中優先</span><span class="badge topic-badge">漁獲執法</span></div>
+      <p class="news-source">星島加拿大</p><h3><a href="https://news.google.com/read/CBMijwFBVV95cUxNN25KbWh6emtwZnRKZk5maDYyX2RWNGdEa3RIVHdYNUZwSjhqOW9lR1VoN19hMW8zZ1hfUl9BOWRIT1Z6RmlCZVdEMEVFNnc1TUtRVlB5U2tUZ01SNmtQUDVIODczX2lWVlZiYUJocEZnUjdNM1FaM0xTb0xkTFJBRWVVZkJ6c0lkbjd1UGFRUQ?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer">卑詩男子非法持有珍貴漁獲 被罰款5500元禁釣一年</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>海外違法漁獲案件顯示科學配額、物種辨識與可追溯管理的重要；水試所將持續強化保育研究與技術支援。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>本案屬加拿大司法與漁業管理範疇，水試所尊重當地權責機關認定。從科研與技術角度，珍貴或資源量偏低物種的管理需建立在族群評估、尺寸與季節限制、漁獲辨識及可追溯紀錄之上。水試所將持續精進臺灣重要水產資源調查、物種鑑定及數位監測技術，並協助漁民與消費端理解保育規範。個案裁罰不宜直接類比臺灣制度，但可作為法遵教育與風險溝通參考。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://news.google.com/read/CBMijwFBVV95cUxNN25KbWh6emtwZnRKZk5maDYyX2RWNGdEa3RIVHdYNUZwSjhqOW9lR1VoN19hMW8zZ1hfUl9BOWRIT1Z6RmlCZVdEMEVFNnc1TUtRVlB5U2tUZ01SNmtQUDVIODczX2lWVlZiYUJocEZnUjdNM1FaM0xTb0xkTFJBRWVVZkJ6c0lkbjd1UGFRUQ?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="正向" data-priority="中" data-topic="漁村體驗推廣" data-search="推廣傳統石蚵產業 水試所漁村體驗報名 金門日報 漁村體驗推廣 本活動由金門縣水試所辦理。中央水試所樂見石蚵科普，並將持續以研究與技術協助養殖永續。">
+    <div class="news-card-side"><span class="priority-rail medium"></span><div><span class="cluster-label">C1</span><strong>11 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-positive">正向</span><span class="badge priority-medium">中優先</span><span class="badge topic-badge">漁村體驗推廣</span></div>
+      <p class="news-source">金門日報</p><h3><a href="https://www.kmdn.gov.tw/1117/1271/1272/589047" target="_blank" rel="noreferrer">推廣傳統石蚵產業 水試所漁村體驗報名</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>本活動由金門縣水試所辦理。中央水試所樂見石蚵科普，並將持續以研究與技術協助養殖永續。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>本報導所稱「水試所」為金門縣水產試驗所，與中央農業部水產試驗所為不同機關，對外溝通應清楚區隔。活動規劃於古寧頭北山進行漁村走讀、潮間帶生態探索、石蚵養殖解說及料理體驗，有助民眾理解傳統產業與海洋環境的關係。中央水試所樂見地方推動水產科普，並可在權責範圍內就牡蠣養殖、環境承載、生物安全、產品品質及氣候調適提供研究與技術交流，支持文化保存與資源永續利用。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://www.kmdn.gov.tw/1117/1271/1272/589047" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="中性" data-priority="高" data-topic="國際漁業治理" data-search="臺美持續深化漁業合作 共同打擊iuu漁撈行為 蕃新聞 國際漁業治理 水試所支持以科學資料、追溯及監測技術強化臺美合作，共同提升iuu防制、資源永續與產業韌性。">
+    <div class="news-card-side"><span class="priority-rail high"></span><div><span class="cluster-label">C3</span><strong>14 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-neutral">中性</span><span class="badge priority-high">高優先</span><span class="badge topic-badge">國際漁業治理</span></div>
+      <p class="news-source">蕃新聞</p><h3><a href="https://n.yam.com/Article/20260729250190" target="_blank" rel="noreferrer">臺美持續深化漁業合作 共同打擊IUU漁撈行為</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>水試所支持以科學資料、追溯及監測技術強化臺美合作，共同提升IUU防制、資源永續與產業韌性。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>水試所支持臺美就非法、未報告及不受規範（IUU）漁撈、漁業人權與國際參與深化合作。科研面可透過資源量評估、漁獲與混獲監測、物種鑑定、電子化紀錄及養殖技術交流，提供治理所需證據。報導亦提及續簽漁業及養殖合作備忘錄，以及輸美資格證明與海洋哺乳類保護規範等技術議題；水試所可在權責範圍內協助資料標準、監測方法與技術應用，並配合漁業署及相關機關提升透明度與國際信任。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://n.yam.com/Article/20260729250190" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="正向" data-priority="低" data-topic="消費市場" data-search="北市內湖水產店超佛心價冷凍水餃 一顆不到2元現已買嘸 壹電視 消費市場 價格話題反映消費關注；選購冷凍水產食品仍應確認標示、來源、保存與冷鏈，不宜僅以低價判斷品質。">
+    <div class="news-card-side"><span class="priority-rail low"></span><div><span class="cluster-label">C4</span><strong>18 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-positive">正向</span><span class="badge priority-low">低優先</span><span class="badge topic-badge">消費市場</span></div>
+      <p class="news-source">壹電視</p><h3><a href="https://news.google.com/read/CBMie0FVX3lxTFBtd1VwYjdVOWUwUFY3NjBvV3dzQUNyLVdjbmVHQVhhSEZsRjVsUFJoTlM2T1p5S2VENHVkYnZ4el8xM1dZSG9XcHZEb2FlQlNqZlVadUtDMjZtMm1EMGthS211MDV3Zk5fbmFBV2JvaUVaWXR6eFE3Z3JvVQ?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer">北市內湖水產店超佛心價冷凍水餃 一顆不到2元現已買嘸</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>價格話題反映消費關注；選購冷凍水產食品仍應確認標示、來源、保存與冷鏈，不宜僅以低價判斷品質。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>本則主要屬零售價格與消費話題，僅憑售價無法判斷原料品質或安全。水試所建議消費者選購冷凍水產加工食品時，確認品名、成分、原產地、有效日期、保存條件及包裝完整性，並維持冷凍冷鏈、充分加熱。若涉及食品標示或安全查驗，應以衛生主管機關及業者正式資訊為準。水試所將持續推動水產品加工、保鮮與品質技術研究，協助產業提升產品穩定性與消費信任。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://news.google.com/read/CBMie0FVX3lxTFBtd1VwYjdVOWUwUFY3NjBvV3dzQUNyLVdjbmVHQVhhSEZsRjVsUFJoTlM2T1p5S2VENHVkYnZ4el8xM1dZSG9XcHZEb2FlQlNqZlVadUtDMjZtMm1EMGthS211MDV3Zk5fbmFBV2JvaUVaWXR6eFE3Z3JvVQ?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="中性" data-priority="中" data-topic="漁港設施與地方治理" data-search="揮別毛胚屋！民代爭取經費活化漁港空間 tdn台灣生活新聞 漁港設施與地方治理 漁港活化應優先維持作業與安全功能，兼顧冷鏈、防災、環境及公共使用；水試所可提供技術建議。">
+    <div class="news-card-side"><span class="priority-rail medium"></span><div><span class="cluster-label">C7</span><strong>18 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-neutral">中性</span><span class="badge priority-medium">中優先</span><span class="badge topic-badge">漁港設施與地方治理</span></div>
+      <p class="news-source">TDN台灣生活新聞</p><h3><a href="https://news.google.com/read/CBMiUEFVX3lxTE03WlgxeThyT0p1WnNiRC02UlVSSVdQeVF2X3RBTjJnS3pUUDVLM2lqQ2JjdTlwSmNBSUphWS1Xa2tNcUxiWkF6RFE1WThzUEtP?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer">揮別毛胚屋！民代爭取經費活化漁港空間</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>漁港活化應優先維持作業與安全功能，兼顧冷鏈、防災、環境及公共使用；水試所可提供技術建議。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>漁港空間活化若能改善產業服務與公共使用，具有地方發展效益；規劃仍應以漁業作業、安全及生產需求為優先，並納入卸魚動線、冷鏈衛生、防災韌性、廢棄物處理、能源效率與環境承載。水試所可在權責範圍內提供水產品保鮮、加工、養殖技術及環境監測等專業建議。由於目前可核實資訊主要為新聞標題，實際經費、設計內容與權責分工，仍應以地方政府及漁業主管機關正式資料為準。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://news.google.com/read/CBMiUEFVX3lxTE03WlgxeThyT0p1WnNiRC02UlVSSVdQeVF2X3RBTjJnS3pUUDVLM2lqQ2JjdTlwSmNBSUphWS1Xa2tNcUxiWkF6RFE1WThzUEtP?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="中性" data-priority="高" data-topic="資源保育規範" data-search="吃蟹注意！8/1起保護抱卵母蟹禁捕禁售 違者最高開罰15萬元 line today／newtalk 資源保育規範 保護抱卵母蟹與小蟹有助資源補充；水試所將持續提供族群與繁殖研究，支持科學化管理及產業宣導。">
+    <div class="news-card-side"><span class="priority-rail high"></span><div><span class="cluster-label">C5</span><strong>20 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-neutral">中性</span><span class="badge priority-high">高優先</span><span class="badge topic-badge">資源保育規範</span></div>
+      <p class="news-source">LINE TODAY／Newtalk</p><h3><a href="https://news.google.com/read/CBMiVkFVX3lxTE0xYVQ4Umdxd0RqQkU4MDVaT2JVR0wyRE9lN1NFd2JvcjFpLVpRT2hQaE5tUmlpemN2anZ6NjUtUE9rTE5jT1lIWmRTdFE2Y0hBSHRWZTB3?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer">吃蟹注意！8/1起保護抱卵母蟹禁捕禁售 違者最高開罰15萬元</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>保護抱卵母蟹與小蟹有助資源補充；水試所將持續提供族群與繁殖研究，支持科學化管理及產業宣導。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>蟳蟹繁殖期保護抱卵母蟹與未達規定尺寸個體，是維持資源補充與漁業永續的重要措施。水試所將持續進行生物學、繁殖週期、資源變動及棲地環境研究，提供管理措施調整所需科學依據；並協助開發物種與抱卵辨識、養殖繁育及資源復育技術。漁民、販售業者與消費者應依漁業署公告及地方權責機關說明辦理。涉及查緝與裁罰，則由主管機關依法認定。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://news.google.com/read/CBMiVkFVX3lxTE0xYVQ4Umdxd0RqQkU4MDVaT2JVR0wyRE9lN1NFd2JvcjFpLVpRT2hQaE5tUmlpemN2anZ6NjUtUE9rTE5jT1lIWmRTdFE2Y0hBSHRWZTB3?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article><article class="news-card" data-sentiment="中性" data-priority="高" data-topic="資源保育規範" data-search="8/1起進入蟳蟹繁殖期 漁業署籲禁捕售小蟹與抱卵母蟹 中華新聞雲／中華日報 資源保育規範 水試所支持繁殖期保育措施，將以資源調查與繁養殖技術協助蟳蟹資源永續，並加強產業端辨識宣導。">
+    <div class="news-card-side"><span class="priority-rail high"></span><div><span class="cluster-label">C5</span><strong>21 小時前</strong></div></div>
+    <div class="news-card-body">
+      <div class="badge-row"><span class="badge sentiment-neutral">中性</span><span class="badge priority-high">高優先</span><span class="badge topic-badge">資源保育規範</span></div>
+      <p class="news-source">中華新聞雲／中華日報</p><h3><a href="https://news.google.com/read/CBMiUkFVX3lxTE9zUXIwSUlrYVBQaEU2TlFlMklrN3BQQVQwS2EwMzZTVFB4NHRSbHZBb2djZHhzek5vQjY0ZzI2YjlzdlB3OHBERy1Ka3J2SFlPWlE?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer">8/1起進入蟳蟹繁殖期 漁業署籲禁捕售小蟹與抱卵母蟹</a></h3>
+      <div class="response-short"><span>水試所簡要回應</span><p>水試所支持繁殖期保育措施，將以資源調查與繁養殖技術協助蟳蟹資源永續，並加強產業端辨識宣導。</p></div>
+      <details><summary>展開詳細回應 <span aria-hidden="true">＋</span></summary><div class="detail-response"><p>水試所支持依科學證據推動蟳蟹繁殖期保育。禁捕售抱卵母蟹與小型個體，可降低成熟前與繁殖個體的捕撈壓力，讓族群有機會補充。後續應持續蒐集漁獲量、體長組成、抱卵比例、季節與海域差異等資料，評估措施成效並滾動調整。水試所亦將精進種苗繁育、養殖管理及資源復育研究，並與漁業署、地方政府、漁會及通路合作，協助第一線正確辨識與落實規範。</p><p class="authority-note">正式對外發布前，應由權責單位完成事實查核與核定。</p></div></details>
+    </div><a class="source-link" href="https://news.google.com/read/CBMiUkFVX3lxTE9zUXIwSUlrYVBQaEU2TlFlMklrN3BQQVQwS2EwMzZTVFB4NHRSbHZBb2djZHhzek5vQjY0ZzI2YjlzdlB3OHBERy1Ka3J2SFlPWlE?hl=zh-TW&amp;gl=TW&amp;ceid=TW%3Azh-Hant" target="_blank" rel="noreferrer" aria-label="開啟原始報導">↗</a>
+  </article></div><div class="empty-state" id="empty" hidden><strong>沒有符合條件的新聞</strong><p>請調整篩選條件或清除搜尋字詞。</p><button id="empty-reset">清除篩選</button></div></section>
+<section class="notice-panel"><div class="notice-symbol">i</div><div><h2>判讀與使用注意</h2><p>情緒標記反映事件與標題語氣，不代表水試所對媒體或當事人的評價。同一事件以 cluster_id 歸群；涉及執法、裁罰、食安認定或個案責任時，尊重權責機關調查。</p></div></section>
+<footer><div class="brand footer-brand"><span class="brand-mark">水</span><span>水產科技情報站</span></div><p>資料來源：Google 新聞及公開媒體 · 監測快照 2026/08/01 11:36</p><p>水產試驗所科研及技術應用推廣立場</p></footer></main>
+<script>const q=document.querySelector('#query'),s=document.querySelector('#sentiment'),p=document.querySelector('#priority'),t=document.querySelector('#topic'),cards=[...document.querySelectorAll('.news-card')],count=document.querySelector('#result-count'),empty=document.querySelector('#empty');function apply(){const needle=q.value.trim().toLocaleLowerCase('zh-Hant');let shown=0;cards.forEach(c=>{const ok=(!needle||c.dataset.search.includes(needle))&&(s.value==='全部'||c.dataset.sentiment===s.value)&&(p.value==='全部'||c.dataset.priority===p.value)&&(t.value==='全部'||c.dataset.topic===t.value);c.hidden=!ok;if(ok)shown++});count.textContent=shown;empty.hidden=shown!==0}function reset(){q.value='';s.value=p.value=t.value='全部';apply()}[q,s,p,t].forEach(el=>el.addEventListener(el===q?'input':'change',apply));document.querySelector('#reset').addEventListener('click',reset);document.querySelector('#empty-reset').addEventListener('click',reset);</script></body></html>

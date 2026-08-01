@@ -10,6 +10,11 @@ const news = [...datasets.news_items].sort((a, b) => a.hours_ago - b.hours_ago);
 const sentiments = datasets.sentiment_summary;
 const topics = [...datasets.topic_summary].sort((a, b) => b.count - a.count);
 const topicMax = Math.max(...topics.map((item) => item.count));
+const generatedAt = artifact.snapshot.generatedAt;
+const [datePart, timePart] = generatedAt.split("T");
+const displayDate = datePart.replaceAll("-", " / ");
+const displayTime = timePart.slice(0, 5);
+const compactDate = datePart.replaceAll("-", "/");
 const topAlert = news.find((item) => item.priority === "高" && item.hours_ago === 0) ?? news[0];
 
 const esc = (value) => String(value ?? "").replace(/[&<>\"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" })[char]);
@@ -46,12 +51,20 @@ const html = `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><m
 <footer><div class="brand footer-brand"><span class="brand-mark">水</span><span>水產科技情報站</span></div><p>資料來源：Google 新聞及公開媒體 · 監測快照 2026/08/01 10:34</p><p>水產試驗所科研及技術應用推廣立場</p></footer></main>
 <script>const q=document.querySelector('#query'),s=document.querySelector('#sentiment'),p=document.querySelector('#priority'),t=document.querySelector('#topic'),cards=[...document.querySelectorAll('.news-card')],count=document.querySelector('#result-count'),empty=document.querySelector('#empty');function apply(){const needle=q.value.trim().toLocaleLowerCase('zh-Hant');let shown=0;cards.forEach(c=>{const ok=(!needle||c.dataset.search.includes(needle))&&(s.value==='全部'||c.dataset.sentiment===s.value)&&(p.value==='全部'||c.dataset.priority===p.value)&&(t.value==='全部'||c.dataset.topic===t.value);c.hidden=!ok;if(ok)shown++});count.textContent=shown;empty.hidden=shown!==0}function reset(){q.value='';s.value=p.value=t.value='全部';apply()}[q,s,p,t].forEach(el=>el.addEventListener(el===q?'input':'change',apply));document.querySelector('#reset').addEventListener('click',reset);document.querySelector('#empty-reset').addEventListener('click',reset);</script></body></html>`;
 
+const renderedHtml = html
+  .replace("2026 / 08 / 01　10:34", `${displayDate}　${displayTime}`)
+  .replace("2026/08/01 10:34", `${compactDate} ${displayTime}`);
+
 const clientDir = path.join(root, "dist", "client");
 const serverDir = path.join(root, "dist", "server");
 fs.mkdirSync(clientDir, { recursive: true });
 fs.mkdirSync(serverDir, { recursive: true });
-fs.writeFileSync(path.join(clientDir, "index.html"), html);
-const worker = `const html=${JSON.stringify(html)};export default{async fetch(){return new Response(html,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"public, max-age=300","x-content-type-options":"nosniff"}})}};`;
+fs.writeFileSync(path.join(clientDir, "index.html"), renderedHtml);
+const docsDir = path.join(root, "docs");
+fs.mkdirSync(docsDir, { recursive: true });
+fs.writeFileSync(path.join(docsDir, "index.html"), renderedHtml);
+fs.writeFileSync(path.join(docsDir, ".nojekyll"), "");
+const worker = `const html=${JSON.stringify(renderedHtml)};export default{async fetch(){return new Response(html,{headers:{"content-type":"text/html; charset=utf-8","cache-control":"public, max-age=300","x-content-type-options":"nosniff"}})}};`;
 fs.writeFileSync(path.join(serverDir, "index.js"), worker);
 fs.mkdirSync(path.join(root, "dist", ".openai"), { recursive: true });
 fs.copyFileSync(path.join(root, ".openai", "hosting.json"), path.join(root, "dist", ".openai", "hosting.json"));

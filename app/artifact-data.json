@@ -5,7 +5,7 @@
     "surface": "dashboard",
     "title": "水產新聞與輿情監測儀表板",
     "description": "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
-    "generatedAt": "2026-08-01T10:34:56+08:00",
+    "generatedAt": "2026-08-01T11:36:27+08:00",
     "cards": [
       {
         "id": "card_mentions",
@@ -125,13 +125,19 @@
         "id": "yam_iuu",
         "label": "蕃新聞：臺美漁業合作與 IUU",
         "href": "https://n.yam.com/Article/20260729250190"
+      },
+      {
+        "id": "google_news_govtw_24h",
+        "label": "Google 新聞：臺灣政府來源水產監測（24 小時）",
+        "path": "news_snapshot.sql",
+        "href": "https://news.google.com/search?q=site%3Agov.tw%20(%E6%BC%81%E6%A5%AD%20OR%20%E6%B0%B4%E7%94%A2%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF)%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
       }
     ],
     "blocks": [
       {
         "id": "intro",
         "type": "markdown",
-        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 10:34（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪新增 1 則具臺灣治理參考價值的國際報導，關注菲律賓商業漁船監控規定遭法院裁決失效後，保育團體對 IUU 漁撈監測及小規模漁民保障的疑慮；目前共 12 則新聞、10 個事件群組。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
+        "body": "# 水產新聞與輿情監測儀表板\n\n**監測時間：** 2026/08/01 11:36（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\n\n本輪以綜合關鍵字及臺灣政府來源再次檢索最近 24 小時內容，未發現可與既有事件區隔的新水產新聞；目前維持 12 則新聞、10 個事件群組。已排除僅因地名、活動或一般農業關鍵字命中但與水產產業無直接關聯的結果。回應文字為建議口徑，正式對外發布前仍應由權責單位完成事實查核與核定。"
       },
       {"id": "metrics", "type": "metric-strip", "cardIds": ["card_mentions", "card_clusters", "card_governance", "card_negative"]},
       {"id": "sentiment", "type": "chart", "chartId": "sentiment_chart", "layout": "half"},
@@ -148,7 +154,7 @@
   },
   "snapshot": {
     "version": 1,
-    "generatedAt": "2026-08-01T10:34:56+08:00",
+    "generatedAt": "2026-08-01T11:36:27+08:00",
     "status": "ready",
     "datasets": {
       "kpis": [
@@ -174,7 +180,7 @@
         {
           "id": "n1",
           "cluster_id": "c1",
-          "hours_ago": 3,
+          "hours_ago": 4,
           "priority": "低",
           "source": "蕃新聞",
           "title": "跟著海風趣蚵田！漁村體驗報名中",
@@ -252,7 +258,7 @@
         {
           "id": "n7",
           "cluster_id": "c6",
-          "hours_ago": 1,
+          "hours_ago": 2,
           "priority": "高",
           "source": "ESG遠見",
           "title": "從洗腎魚變身壽司主角！一條巴沙魚逆襲全球漁市",
@@ -265,7 +271,7 @@
         {
           "id": "n8",
           "cluster_id": "c1",
-          "hours_ago": 10,
+          "hours_ago": 11,
           "priority": "中",
           "source": "金門日報",
           "title": "推廣傳統石蚵產業 水試所漁村體驗報名",
@@ -278,7 +284,7 @@
         {
           "id": "n9",
           "cluster_id": "c7",
-          "hours_ago": 17,
+          "hours_ago": 18,
           "priority": "中",
           "source": "TDN台灣生活新聞",
           "title": "揮別毛胚屋！民代爭取經費活化漁港空間",
@@ -291,7 +297,7 @@
         {
           "id": "n10",
           "cluster_id": "c8",
-          "hours_ago": 2,
+          "hours_ago": 3,
           "priority": "中",
           "source": "udn女子漾／旅奇傳媒",
           "title": "從九孔池走向地方活化 返鄉十餘年的李勝興用一生守住貢寮的海洋未來",
@@ -304,7 +310,7 @@
         {
           "id": "n11",
           "cluster_id": "c9",
-          "hours_ago": 1,
+          "hours_ago": 2,
           "priority": "中",
           "source": "自由時報",
           "title": "東港青年壯遊培訓外語導覽員推動漁村文化走向國際",
@@ -341,6 +347,12 @@
       "id": "yam_iuu",
       "label": "蕃新聞：臺美漁業合作與 IUU",
       "href": "https://n.yam.com/Article/20260729250190"
+    },
+    {
+      "id": "google_news_govtw_24h",
+      "label": "Google 新聞：臺灣政府來源水產監測（24 小時）",
+      "path": "news_snapshot.sql",
+      "href": "https://news.google.com/search?q=site%3Agov.tw%20(%E6%BC%81%E6%A5%AD%20OR%20%E6%B0%B4%E7%94%A2%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF)%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
     }
   ]
 }
