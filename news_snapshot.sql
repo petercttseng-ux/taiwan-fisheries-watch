@@ -1,4 +1,4 @@
--- Browser-reviewed Google News snapshot rechecked 2026-08-01 14:28 Asia/Taipei.
+-- Browser-reviewed Google News snapshot rechecked 2026-08-01 14:38 Asia/Taipei.
 -- No new valid event found; retained sixteen reviewed rows across twelve event clusters.
 -- Primary query: https://news.google.com/search?q=(%E6%B0%B4%E7%94%A2%20OR%20%E6%BC%81%E6%A5%AD%E7%BD%B2%20OR%20%E6%B0%B4%E7%94%A2%E8%A9%A6%E9%A9%97%E6%89%80%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF%20OR%20%E6%B0%B4%E7%94%A2%E5%93%81%20OR%20%E6%BC%81%E6%9D%91%20OR%20%E6%B5%B7%E6%B4%8B%E4%BF%9D%E8%82%B2%20OR%20%E5%9C%8B%E9%9A%9B%E6%BC%81%E6%A5%AD)%20-%E8%85%90%E5%B1%8D%20-%E7%94%B7%E5%B1%8D%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant
 -- Government query: https://news.google.com/search?q=site%3Agov.tw%20(%E6%BC%81%E6%A5%AD%20OR%20%E6%B0%B4%E7%94%A2%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E6%B8%AF)%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant
