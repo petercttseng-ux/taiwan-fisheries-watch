@@ -5,7 +5,7 @@
                      "surface":  "dashboard",
                      "title":  "水產新聞與輿情監測儀表板",
                      "description":  "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
-                     "generatedAt":  "2026-08-02T21:26:00+08:00",
+                     "generatedAt":  "2026-08-02T21:45:00+08:00",
                      "cards":  [
                                    {
                                        "id":  "card_mentions",
@@ -108,7 +108,7 @@
                                     {
                                         "id":  "topic_chart",
                                         "title":  "議題分布",
-                                        "subtitle":  "依最近24小時有效新聞分類；本輪12則分屬7個事件群組，同一政治與漁村影像事件以cluster_id合併計算熱度。",
+                                        "subtitle":  "依最近24小時有效新聞分類；本輪13則分屬7個事件群組，同一政治與漁村影像事件以cluster_id合併計算熱度。",
                                         "type":  "horizontalBar",
                                         "intent":  "comparison",
                                         "dataset":  "topic_summary",
@@ -289,7 +289,7 @@
                                     {
                                         "id":  "intro",
                                         "type":  "markdown",
-                                        "body":  "# 水產新聞與輿情監測儀表板\r\n\r\n**監測時間：** 2026/08/02 21:26（臺北）　**更新頻率：** 每 10 分鐘　**角色立場：** 水產試驗所為臺灣中央政府唯一從事水產科技研發及技術應用推廣之政府機關。\r\n\r\n本輪新增8則報導、3個事件群組：高雄農漁水利政策倡議（4家媒體）、雲林海線農漁村影像創作（2家媒體）及西班牙八爪魚養殖計畫撤回；另新增聯合報對蟳蟹保育同一事件的報導。已將超出24小時或無法確認時限的石蚵體驗、巴沙魚、美國河川高溫及越南IUU事件移出本輪，並排除選舉聲量中僅口號式且無水產政策內容的重複命中。現為12則新聞、7個事件群組；政治事件僅就技術政策內容監測，不涉及候選人支持。正式對外發布前仍應由權責單位完成事實查核與核定。"
+                                        "body":  "# 水產新聞輿情監測儀表板\r\n\r\n**監測時間：** 2026-08-02 21:45（Asia/Taipei）\r\n\r\n本輪新增1則不同媒體報導：PChome Online新聞加入高雄農漁水利政策倡議事件群組（cluster_id c18），未另增事件群組。其餘最近24小時有效事件無變化；羽球羽毛養殖等關鍵字誤命中持續排除。現為13則新聞、7個事件群組。政治事件僅就技術政策內容監測，不涉及候選人支持。正式對外發布前仍應由權責單位完成事實查核與核定。"
                                     },
                                     {
                                         "id":  "metrics",
@@ -335,14 +335,14 @@
                  },
     "snapshot":  {
                      "version":  1,
-                     "generatedAt":  "2026-08-02T21:26:00+08:00",
+                     "generatedAt":  "2026-08-02T21:45:00+08:00",
                      "status":  "ready",
                      "datasets":  {
                                       "kpis":  [
                                                    {
-                                                       "mentions":  12,
+                                                       "mentions":  13,
                                                        "clusters":  7,
-                                                       "governance":  7,
+                                                       "governance":  8,
                                                        "negative":  1
                                                    }
                                                ],
@@ -350,27 +350,35 @@
                                                                 {
                                                                     "sentiment":  "正向",
                                                                     "count":  4,
-                                                                    "share_pct":  33.3
+                                                                    "share_pct":  30.8
                                                                 },
                                                                 {
                                                                     "sentiment":  "中性",
-                                                                    "count":  7,
-                                                                    "share_pct":  58.3
+                                                                    "count":  8,
+                                                                    "share_pct":  61.5
                                                                 },
                                                                 {
                                                                     "sentiment":  "負向",
                                                                     "count":  1,
-                                                                    "share_pct":  8.3
+                                                                    "share_pct":  7.7
                                                                 }
                                                             ],
                                       "topic_summary":  [
                                                             {
-                                                                "topic":  "智慧冷鏈與加工",
-                                                                "count":  1
+                                                                "topic":  "漁業政策倡議與產業韌性",
+                                                                "count":  5
                                                             },
                                                             {
                                                                 "topic":  "資源保育規範",
                                                                 "count":  2
+                                                            },
+                                                            {
+                                                                "topic":  "漁村影像與地方創生",
+                                                                "count":  2
+                                                            },
+                                                            {
+                                                                "topic":  "智慧冷鏈與加工",
+                                                                "count":  1
                                                             },
                                                             {
                                                                 "topic":  "養殖技術與資源永續",
@@ -381,14 +389,6 @@
                                                                 "count":  1
                                                             },
                                                             {
-                                                                "topic":  "漁業政策倡議與產業韌性",
-                                                                "count":  4
-                                                            },
-                                                            {
-                                                                "topic":  "漁村影像與地方創生",
-                                                                "count":  2
-                                                            },
-                                                            {
                                                                 "topic":  "國際養殖倫理與治理",
                                                                 "count":  1
                                                             }
@@ -397,8 +397,8 @@
                                                          {
                                                              "id":  "n21",
                                                              "cluster_id":  "c13",
-                                                             "hours_ago":  12,
-                                                             "published_at_note":  "Google新聞顯示約12小時前；來源頁面標示2026-08-02",
+                                                             "hours_ago":  13,
+                                                             "published_at_note":  "Google新聞顯示約13小時前",
                                                              "priority":  "高",
                                                              "source":  "焦點時報",
                                                              "title":  "臺南將軍智慧水產中心啟動 打造冷鏈物流示範基地",
@@ -510,7 +510,7 @@
                                                              "id":  "n32",
                                                              "cluster_id":  "c18",
                                                              "hours_ago":  0,
-                                                             "published_at_note":  "Google新聞顯示約7分鐘前",
+                                                             "published_at_note":  "Google新聞顯示約26分鐘前",
                                                              "priority":  "高",
                                                              "source":  "蕃新聞",
                                                              "title":  "44個農漁水利團體大集結挺賴瑞隆 34個農漁會全到齊展現基層大團結",
@@ -523,7 +523,7 @@
                                                          {
                                                              "id":  "n33",
                                                              "cluster_id":  "c19",
-                                                             "hours_ago":  1,
+                                                             "hours_ago":  2,
                                                              "published_at":  "2026-08-02T19:42:00+08:00",
                                                              "priority":  "中",
                                                              "source":  "Yahoo新聞／獨家報導",
@@ -561,6 +561,20 @@
                                                              "url":  "https://www.i-cable.com/%E6%96%B0%E8%81%9E%E8%B3%87%E8%A8%8A/490467/%E8%A5%BF%E7%8F%AD%E7%89%99%E8%B7%A8%E5%9C%8B%E6%B0%B4%E7%94%A2%E4%BC%81%E6%A5%AD%E5%8F%AB%E5%81%9C%E5%85%A8%E7%90%83%E9%A6%96%E5%80%8B%E5%85%AB%E7%88%AA%E9%AD%9A%E9%A4%8A%E6%AE%96%E5%A0%B4%E8%A8%88",
                                                              "short_response":  "西班牙八爪魚養殖計畫撤回凸顯動物福利、環境承載與監管挑戰；水試所倡議以科學證據審慎評估新物種養殖。",
                                                              "detailed_response":  "西班牙企業因商業與監管因素撤回全球首座大型八爪魚養殖場申請，爭議涉及環境影響、密集飼養下的動物福利與物種行為需求。此案由西班牙權責機關與企業處理，臺灣不宜逕行套用其結論；但對新興養殖物種的研發與政策評估，應同步檢視種源、飼料、疾病、生物安全、環境承載、逃逸風險、屠宰方式及市場需求。水試所可提供實驗設計、行為與健康指標、環境監測及風險評估方法，供權責機關與產業參考。"
+                                                         },
+                                                         {
+                                                             "id":  "n36",
+                                                             "cluster_id":  "c18",
+                                                             "hours_ago":  1,
+                                                             "published_at_note":  "Google新聞顯示約1小時前",
+                                                             "priority":  "高",
+                                                             "source":  "PChome Online新聞",
+                                                             "title":  "「護農漁、顧收益」高雄農漁水利界全員大團結 力挺賴瑞隆",
+                                                             "topic":  "漁業政策倡議與產業韌性",
+                                                             "sentiment":  "中性",
+                                                             "url":  "https://news.google.com/read/CBMijAFBVV95cUxQREFhcHh0YVBUU0owNHFYaUlvdjVfaVFWbnR1TGdGVzVHWXVkZ29sVGxGZ1JpOUtmTjZ1N0FlalBMTENZZTJKd3V0MGg4REM1LVg0S1J4UXdickJoUzl2OWttYjFseUF3clJQN2ZkNDJnNU5aekJqdjNfSWpYS1hWbHVWdzJmQ2FKZjNGeQ?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
+                                                             "short_response":  "農漁水利政策倡議涉及智慧養殖、漁港、供排水與作業安全；水試所可提供科學與技術資料，不涉選舉立場。",
+                                                             "detailed_response":  "本案屬地方選舉期間的產業政策倡議，內容包含智慧養殖、漁船與魚塭設備升級、漁港能量、國際行銷、海上醫療、作業安全及養殖區供排水。水試所基於研究與技術推廣職責，可就養殖環境監測、耐候生產、種苗與疾病防治、冷鏈加工、資源永續及風險評估提供客觀資料，並配合權責機關推動技術驗證。水試所不評論候選人或選舉支持關係，相關承諾、預算及執行可行性應由提案者與主管機關說明並依法核定。"
                                                          }
                                                      ]
                                   }
