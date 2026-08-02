@@ -1,4 +1,4 @@
--- Browser-reviewed Google News snapshot rechecked 2026-08-02 15:15 Asia/Taipei.
+-- Browser-reviewed Google News snapshot rechecked 2026-08-02 15:25 Asia/Taipei.
 -- No new valid event found; retained seven reviewed rows across seven event clusters.
 -- Primary query: https://news.google.com/search?q=(%E6%B0%B4%E7%94%A2%20OR%20%E6%BC%81%E6%A5%AD%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E7%8D%B2%20OR%20%E6%BC%81%E6%9D%91%20OR%20%E6%B0%B4%E7%94%A2%E5%93%81%20OR%20%E6%B5%B7%E6%B4%8B%E4%BF%9D%E8%82%B2%20OR%20aquaculture%20OR%20fisheries%20OR%20seafood%20OR%20%22IUU%20fishing%22)%20when%3A1d&hl=zh-TW&gl=TW&ceid=TW%3Azh-Hant
 -- Excluded false positives and sources whose formal publication date fell outside 24 hours.
