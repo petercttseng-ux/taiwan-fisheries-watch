@@ -5,7 +5,7 @@
                      "surface":  "dashboard",
                      "title":  "水產新聞與輿情監測儀表板",
                      "description":  "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
-                     "generatedAt":  "2026-08-02T21:45:00+08:00",
+                     "generatedAt":  "2026-08-03T22:09:00+08:00",
                      "cards":  [
                                    {
                                        "id":  "card_mentions",
@@ -64,7 +64,7 @@
                                     {
                                         "id":  "sentiment_chart",
                                         "title":  "新聞情緒分布",
-                                        "subtitle":  "依新聞標題與可核實內容判讀；中性涵蓋政策公告與治理動態。",
+                                        "subtitle":  "依新聞事件與可核實內容判讀；本輪以正向科研、保育與韌性治理動態為主。",
                                         "type":  "bar",
                                         "intent":  "composition",
                                         "dataset":  "sentiment_summary",
@@ -108,7 +108,7 @@
                                     {
                                         "id":  "topic_chart",
                                         "title":  "議題分布",
-                                        "subtitle":  "依最近24小時有效新聞分類；本輪13則分屬7個事件群組，同一政治與漁村影像事件以cluster_id合併計算熱度。",
+                                        "subtitle":  "最近24小時12則有效報導分屬9個事件群組；同一養殖供電與保護區政策事件以cluster_id合併觀察熱度。",
                                         "type":  "horizontalBar",
                                         "intent":  "comparison",
                                         "dataset":  "topic_summary",
@@ -235,61 +235,66 @@
                      "sources":  [
                                      {
                                          "id":  "google_news_24h",
-                                         "label":  "Google新聞：水產、漁業、養殖與國際治理（24小時）",
+                                         "label":  "Google新聞：臺灣水產、漁業、養殖與海洋治理（24小時）",
                                          "path":  "news_snapshot.sql",
                                          "href":  "https://news.google.com/search?q=(%E6%B0%B4%E7%94%A2%20OR%20%E6%BC%81%E6%A5%AD%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E7%8D%B2%20OR%20%E6%BC%81%E6%9D%91%20OR%20%E6%B0%B4%E7%94%A2%E5%93%81%20OR%20%E6%B5%B7%E6%B4%8B%E4%BF%9D%E8%82%B2%20OR%20aquaculture%20OR%20fisheries%20OR%20seafood%20OR%20%22IUU%20fishing%22)%20when%3A1d\u0026hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant"
                                      },
                                      {
-                                         "id":  "focus_smart_seafood",
-                                         "label":  "焦點時報：臺南將軍智慧水產中心",
-                                         "href":  "https://focus.586.com.tw/2026/08/02/p397976/"
+                                         "id":  "google_news_intl",
+                                         "label":  "Google News：國際養殖、漁業與IUU治理（24小時）",
+                                         "href":  "https://news.google.com/search?q=%28aquaculture%20OR%20fisheries%20OR%20seafood%20OR%20%22IUU%20fishing%22%29%20when%3A1d\u0026hl=en-US\u0026gl=US\u0026ceid=US%3Aen"
                                      },
                                      {
-                                         "id":  "ltn_crab_20260802",
-                                         "label":  "自由時報：抱卵母蟹禁撈禁售",
-                                         "href":  "https://news.ltn.com.tw/amp/news/life/breakingnews/5525913"
+                                         "id":  "power_aquaculture",
+                                         "label":  "今傳媒：養殖產業電力防災宣導",
+                                         "href":  "https://focusnews.com.tw/2026/08/713904/"
                                      },
                                      {
-                                         "id":  "ftv_urchin",
-                                         "label":  "民視：澎湖馬糞海膽人工養殖",
-                                         "href":  "https://www.ftvnews.com.tw/news/detail/2026802J01M1"
+                                         "id":  "ftv_urchin_20260803",
+                                         "label":  "Formosa News：澎湖海膽養殖與餌料藻",
+                                         "href":  "https://english.ftvnews.com.tw/news/2026729W08EA"
                                      },
                                      {
-                                         "id":  "kmweb_crab",
-                                         "label":  "農業知識入口網：蟳蟹保育正式資訊",
-                                         "href":  "https://kmweb.moa.gov.tw/theme_data.php?theme=news\u0026sub_theme=agri_life\u0026id=100182"
+                                         "id":  "chiayi_fresh",
+                                         "label":  "睿傳媒：嘉義優鮮水產電商活動",
+                                         "href":  "https://www.right-media.news/archives/225625"
                                      },
                                      {
-                                         "id":  "ltn_hualien_ice",
-                                         "label":  "自由時報：花蓮漁港製冰供應中斷",
-                                         "href":  "https://news.ltn.com.tw/amp/news/life/breakingnews/5525847"
+                                         "id":  "ipcf_kiwit",
+                                         "label":  "原視新聞網：Kiwit部落捕魚祭",
+                                         "href":  "https://news.ipcf.org.tw/207567"
                                      },
                                      {
-                                         "id":  "udn_crab_20260802",
-                                         "label":  "聯合新聞網：抱卵母蟹保育規範",
-                                         "href":  "https://udn.com/news/amp/story/7470/9665624"
+                                         "id":  "udn_coral",
+                                         "label":  "聯合新聞網：珊瑚共生菌耐熱研究",
+                                         "href":  "https://udn.com/news/amp/story/7266/9667456"
                                      },
                                      {
-                                         "id":  "cna_fisheries_policy",
-                                         "label":  "中央社：高雄農漁水利政策倡議",
-                                         "href":  "https://www.cna.com.tw/news/aloc/202608020185.aspx"
+                                         "id":  "pts_crab",
+                                         "label":  "公視新聞網：抱卵母蟹保育規範",
+                                         "href":  "https://news.pts.org.tw/article/820569"
                                      },
                                      {
-                                         "id":  "yahoo_yunlin_village",
-                                         "label":  "Yahoo新聞／獨家報導：雲林農漁村影像創作",
-                                         "href":  "https://tw.news.yahoo.com/%E7%BF%BB%E8%BD%89%E8%BE%B2%E6%BC%81%E6%9D%91%E5%8D%B0%E8%B1%A1-%E9%9B%B2%E6%9E%97%E5%85%AC%E7%94%A8%E9%A0%BB%E9%81%93%E5%BD%B1%E7%89%87%E5%BE%B5%E4%BB%B6%E5%85%AB%E5%BC%B7%E9%BD%8A%E8%81%9A%E9%96%8B%E9%8F%A1%E5%95%9F%E8%88%AA-114254347.html"
+                                         "id":  "oca_mpa",
+                                         "label":  "海洋保育署：整體海洋保護區管理政策方針",
+                                         "href":  "https://www.oca.gov.tw/ch/home.jsp?id=14\u0026parentpath=0,2\u0026mcustomize=news_view.jsp\u0026dataserno=202608030001"
                                      },
                                      {
-                                         "id":  "icable_octopus",
-                                         "label":  "i-CABLE：西班牙八爪魚養殖計畫撤回",
-                                         "href":  "https://www.i-cable.com/%E6%96%B0%E8%81%9E%E8%B3%87%E8%A8%8A/490467/%E8%A5%BF%E7%8F%AD%E7%89%99%E8%B7%A8%E5%9C%8B%E6%B0%B4%E7%94%A2%E4%BC%81%E6%A5%AD%E5%8F%AB%E5%81%9C%E5%85%A8%E7%90%83%E9%A6%96%E5%80%8B%E5%85%AB%E7%88%AA%E9%AD%9A%E9%A4%8A%E6%AE%96%E5%A0%B4%E8%A8%88"
+                                         "id":  "taiwannews_patrol",
+                                         "label":  "Taiwan News：巡護七號太平洋公海巡護",
+                                         "href":  "https://www.taiwannews.com.tw/zh/news/6413630"
+                                     },
+                                     {
+                                         "id":  "eu_state_aid",
+                                         "label":  "European Commission：漁業與養殖燃料成本援助",
+                                         "href":  "https://oceans-and-fisheries.ec.europa.eu/news/commission-approves-eur20-million-state-aid-agricultural-fishing-and-aquaculture-companies-friuli-2026-08-03_en"
                                      }
                                  ],
                      "blocks":  [
                                     {
                                         "id":  "intro",
                                         "type":  "markdown",
-                                        "body":  "# 水產新聞輿情監測儀表板\r\n\r\n**監測時間：** 2026-08-02 21:45（Asia/Taipei）\r\n\r\n本輪新增1則不同媒體報導：PChome Online新聞加入高雄農漁水利政策倡議事件群組（cluster_id c18），未另增事件群組。其餘最近24小時有效事件無變化；羽球羽毛養殖等關鍵字誤命中持續排除。現為13則新聞、7個事件群組。政治事件僅就技術政策內容監測，不涉及候選人支持。正式對外發布前仍應由權責單位完成事實查核與核定。"
+                                        "body":  "# 水產新聞輿情監測儀表板\r\n\r\n**監測時間：** 2026-08-03 22:09（Asia/Taipei）\r\n\r\n本輪最近24小時共納入12則有效報導、9個事件群組；新增養殖供電防災、海膽養殖、產地品牌、部落捕魚祭、珊瑚益生菌、蟳蟹保育、海洋保護區政策、公海巡護及歐盟漁業援助等事件。前輪報導已逾24小時窗口而移除；同一事件保留不同媒體來源並以cluster_id歸群。正式對外發布前仍應由權責單位完成事實查核與核定。"
                                     },
                                     {
                                         "id":  "metrics",
@@ -335,246 +340,236 @@
                  },
     "snapshot":  {
                      "version":  1,
-                     "generatedAt":  "2026-08-02T21:45:00+08:00",
+                     "generatedAt":  "2026-08-03T22:09:00+08:00",
                      "status":  "ready",
                      "datasets":  {
                                       "kpis":  [
                                                    {
-                                                       "mentions":  13,
-                                                       "clusters":  7,
-                                                       "governance":  8,
-                                                       "negative":  1
+                                                       "mentions":  12,
+                                                       "clusters":  9,
+                                                       "governance":  7,
+                                                       "negative":  0
                                                    }
                                                ],
                                       "sentiment_summary":  [
                                                                 {
                                                                     "sentiment":  "正向",
-                                                                    "count":  4,
-                                                                    "share_pct":  30.8
+                                                                    "count":  7,
+                                                                    "share_pct":  58.3
                                                                 },
                                                                 {
                                                                     "sentiment":  "中性",
-                                                                    "count":  8,
-                                                                    "share_pct":  61.5
+                                                                    "count":  5,
+                                                                    "share_pct":  41.7
                                                                 },
                                                                 {
                                                                     "sentiment":  "負向",
-                                                                    "count":  1,
-                                                                    "share_pct":  7.7
+                                                                    "count":  0,
+                                                                    "share_pct":  0
                                                                 }
                                                             ],
                                       "topic_summary":  [
                                                             {
-                                                                "topic":  "漁業政策倡議與產業韌性",
-                                                                "count":  5
+                                                                "topic":  "養殖防災與供電韌性",
+                                                                "count":  3
                                                             },
                                                             {
-                                                                "topic":  "資源保育規範",
+                                                                "topic":  "海洋保護區治理",
                                                                 "count":  2
                                                             },
                                                             {
-                                                                "topic":  "漁村影像與地方創生",
+                                                                "topic":  "國際漁業治理與產業韌性",
                                                                 "count":  2
-                                                            },
-                                                            {
-                                                                "topic":  "智慧冷鏈與加工",
-                                                                "count":  1
                                                             },
                                                             {
                                                                 "topic":  "養殖技術與資源永續",
                                                                 "count":  1
                                                             },
                                                             {
-                                                                "topic":  "漁港基礎設施與供應鏈",
+                                                                "topic":  "水產行銷與產地品牌",
                                                                 "count":  1
                                                             },
                                                             {
-                                                                "topic":  "國際養殖倫理與治理",
+                                                                "topic":  "漁村文化與傳統知識",
+                                                                "count":  1
+                                                            },
+                                                            {
+                                                                "topic":  "海洋保育科技",
+                                                                "count":  1
+                                                            },
+                                                            {
+                                                                "topic":  "資源保育規範",
                                                                 "count":  1
                                                             }
                                                         ],
                                       "news_items":  [
                                                          {
-                                                             "id":  "n21",
-                                                             "cluster_id":  "c13",
-                                                             "hours_ago":  13,
-                                                             "published_at_note":  "Google新聞顯示約13小時前",
-                                                             "priority":  "高",
-                                                             "source":  "焦點時報",
-                                                             "title":  "臺南將軍智慧水產中心啟動 打造冷鏈物流示範基地",
-                                                             "topic":  "智慧冷鏈與加工",
-                                                             "sentiment":  "正向",
-                                                             "url":  "https://focus.586.com.tw/2026/08/02/p397976/",
-                                                             "short_response":  "智慧加工與冷鏈可提升水產品品質、產銷調節及市場韌性；水試所將協助保鮮、加工與品質技術應用。",
-                                                             "detailed_response":  "將軍智慧水產加工及物流運籌中心規劃加工廠、凍庫與智慧冷鏈，預期處理臺灣鯛、文蛤、牡蠣、白蝦及虱目魚等重要養殖水產品，有助產銷調節與市場拓展。水試所可就原料品質、保鮮加工、冷鏈驗證、副產物利用、節能及食品安全相關技術提供研究與應用推廣，並配合地方政府、漁業與衛生權責機關建立可追溯及風險管理機制。實際產能、驗證資格與營運成效仍應以主辦機關正式資料為準。"
-                                                         },
-                                                         {
-                                                             "id":  "n22",
-                                                             "cluster_id":  "c5",
-                                                             "hours_ago":  8,
-                                                             "published_at_note":  "Google新聞顯示約8小時前",
-                                                             "priority":  "高",
-                                                             "source":  "自由時報",
-                                                             "title":  "抱卵母蟹即起到12月底禁撈禁售 違者最高罰15萬",
-                                                             "topic":  "資源保育規範",
-                                                             "sentiment":  "中性",
-                                                             "url":  "https://news.ltn.com.tw/amp/news/life/breakingnews/5525913",
-                                                             "short_response":  "保護抱卵母蟹與小型蟳蟹有助資源補充；水試所將持續提供繁殖與資源調查，裁罰由權責機關認定。",
-                                                             "detailed_response":  "8月1日至12月31日保護抱卵母蟹，以及全年限制未達規定尺寸的蟳蟹，是維持繁殖個體與資源補充的重要措施。水試所將持續蒐集漁獲量、體長組成、抱卵比例、季節與海域差異等資料，協助評估管制成效並精進物種辨識及量測技術。相關規範適用、查緝、裁罰與個案責任，應由漁業署、海巡署及地方權責機關依法認定，水試所不越權下結論。"
-                                                         },
-                                                         {
-                                                             "id":  "n23",
-                                                             "cluster_id":  "c14",
-                                                             "hours_ago":  11,
-                                                             "published_at_note":  "Google新聞顯示約11小時前；民視頁面日期為2026-08-02",
-                                                             "priority":  "高",
-                                                             "source":  "民視新聞網",
-                                                             "title":  "澎湖馬糞海膽供不應求 業者研發人工養殖技術",
-                                                             "topic":  "養殖技術與資源永續",
-                                                             "sentiment":  "正向",
-                                                             "url":  "https://www.ftvnews.com.tw/news/detail/2026802J01M1",
-                                                             "short_response":  "人工養殖海膽可分散野生捕撈壓力；水試所將關注種苗、餌料藻、水質與量產技術，支持資源永續。",
-                                                             "detailed_response":  "以人工養殖馬糞海膽替代部分野生供應，具有降低捕撈壓力與延長供應期的潛力。報導指出目前瓶頸在大型海藻餌料受季節、溫度與水質限制，養殖量仍有限。水試所可從種苗繁育、餌料藻穩定生產、水質與健康管理、成長效率及養殖環境承載等面向投入研究與技術推廣，並與澎湖縣政府、產業及學研單位合作驗證量產模式。野生採捕管理、違規查緝與裁罰仍由權責機關依法辦理。"
-                                                         },
-                                                         {
-                                                             "id":  "n26",
-                                                             "cluster_id":  "c16",
-                                                             "hours_ago":  9,
-                                                             "published_at_note":  "Google新聞顯示約9小時前",
-                                                             "priority":  "高",
-                                                             "source":  "自由時報",
-                                                             "title":  "製冰廠專題2-1》出海沒冰用！花蓮漁港製冰廠斷炊 漁民克難從宜蘭運冰",
-                                                             "topic":  "漁港基礎設施與供應鏈",
-                                                             "sentiment":  "負向",
-                                                             "url":  "https://news.ltn.com.tw/amp/news/life/breakingnews/5525847",
-                                                             "short_response":  "漁港製冰中斷影響漁獲保鮮與作業成本；水試所可提供冷鏈、品質劣變及替代保鮮技術建議。",
-                                                             "detailed_response":  "花蓮漁港製冰供應中斷，可能增加漁民跨區運冰成本，並影響漁獲降溫速度、品質與市場價值。設施設置、維修、營運與補助屬漁港及地方主管機關權責；水試所可就不同魚種的鮮度劣變、用冰需求、船上降溫、冰漿或其他替代保鮮技術、冷鏈監測及節能提供科研與技術建議。後續宜由地方政府、漁會、港區營運單位及漁業主管機關共同盤點備援製冰與調度機制。"
-                                                         },
-                                                         {
-                                                             "id":  "n28",
-                                                             "cluster_id":  "c5",
-                                                             "hours_ago":  10,
-                                                             "published_at":  "2026-08-02T10:42:00+08:00",
-                                                             "priority":  "高",
-                                                             "source":  "聯合新聞網",
-                                                             "title":  "即起至12月31日禁捕撈抱卵母蟹 違者最高罰15萬",
-                                                             "topic":  "資源保育規範",
-                                                             "sentiment":  "中性",
-                                                             "url":  "https://udn.com/news/amp/story/7470/9665624",
-                                                             "short_response":  "保護抱卵母蟹與小型蟳蟹有助資源補充；水試所將持續提供繁殖與資源調查，裁罰由權責機關認定。",
-                                                             "detailed_response":  "漁業署資料顯示，蟳蟹管制措施經科學研究與產官學民合作調整後，平均漁獲量維持穩定，支持持續以資源調查檢視管理成效。水試所將就體長組成、抱卵比例、季節與海域差異等提供科學資料，協助精進物種辨識、量測與資源評估。禁捕、禁售、查緝、裁罰及個案責任，仍應由漁業署、海巡署、地方政府等權責機關依法認定，水試所不越權下結論。"
-                                                         },
-                                                         {
-                                                             "id":  "n29",
-                                                             "cluster_id":  "c18",
-                                                             "hours_ago":  0,
-                                                             "published_at":  "2026-08-02T21:04:00+08:00",
-                                                             "priority":  "高",
-                                                             "source":  "中央社 CNA",
-                                                             "title":  "組農漁水利後援會 賴瑞隆：強農業、興漁業、韌水利",
-                                                             "topic":  "漁業政策倡議與產業韌性",
-                                                             "sentiment":  "中性",
-                                                             "url":  "https://www.cna.com.tw/news/aloc/202608020185.aspx",
-                                                             "short_response":  "農漁水利政策倡議涉及智慧養殖、漁港、供排水與作業安全；水試所可提供科學與技術資料，不涉選舉立場。",
-                                                             "detailed_response":  "本案屬地方選舉期間的產業政策倡議，內容包含智慧養殖、漁船與魚塭設備升級、漁港能量、國際行銷、海上醫療、作業安全及養殖區供排水。水試所基於研究與技術推廣職責，可就養殖環境監測、耐候生產、種苗與疾病防治、冷鏈加工、資源永續及風險評估提供客觀資料，並配合權責機關推動技術驗證。水試所不評論候選人或選舉支持關係，相關承諾、預算及執行可行性應由提案者與主管機關說明並依法核定。"
-                                                         },
-                                                         {
-                                                             "id":  "n30",
-                                                             "cluster_id":  "c18",
-                                                             "hours_ago":  1,
-                                                             "published_at_note":  "Google新聞顯示約1小時前",
+                                                             "id":  "n37",
+                                                             "cluster_id":  "c21",
+                                                             "hours_ago":  5,
+                                                             "published_at_note":  "Google新聞顯示約5小時前；原文日期2026-08-03",
                                                              "priority":  "高",
                                                              "source":  "今傳媒 JNEWS",
-                                                             "title":  "「護農漁、顧收益」高雄農漁水利界全員大團結 力挺賴瑞隆",
-                                                             "topic":  "漁業政策倡議與產業韌性",
+                                                             "title":  "台電台南區處深入養殖產業宣導 防災檢修守住漁牧業命脈",
+                                                             "topic":  "養殖防災與供電韌性",
                                                              "sentiment":  "中性",
-                                                             "url":  "https://news.google.com/read/CBMiWkFVX3lxTFA2V3hOU00wcjVkeHRMalFaNG5NWkVZV1plenB2TG45RFl1MUJ1TEJVRm5heDM1ZTNtXy04ZlFMY1JCeFc2SVFIbGpYU0poWVc3UkNEOFBBYnlDUdIBWkFVX3lxTFA2V3hOU00wcjVkeHRMalFaNG5NWkVZV1plenB2TG45RFl1MUJ1TEJVRm5heDM1ZTNtXy04ZlFMY1JCeFc2SVFIbGpYU0poWVc3UkNEOFBBYnlDUQ?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
-                                                             "short_response":  "農漁水利政策倡議涉及智慧養殖、漁港、供排水與作業安全；水試所可提供科學與技術資料，不涉選舉立場。",
-                                                             "detailed_response":  "本案屬地方選舉期間的產業政策倡議，內容包含智慧養殖、漁船與魚塭設備升級、漁港能量、國際行銷、海上醫療、作業安全及養殖區供排水。水試所基於研究與技術推廣職責，可就養殖環境監測、耐候生產、種苗與疾病防治、冷鏈加工、資源永續及風險評估提供客觀資料，並配合權責機關推動技術驗證。水試所不評論候選人或選舉支持關係，相關承諾、預算及執行可行性應由提案者與主管機關說明並依法核定。"
+                                                             "url":  "https://focusnews.com.tw/2026/08/713904/",
+                                                             "short_response":  "養殖生產高度依賴水車、抽水與備援電力；水試所支持設備巡檢、智慧告警與場域防災技術推廣。",
+                                                             "detailed_response":  "台電進入養殖產業宣導電力設備檢修、備用發電機試運轉、自動切換開關、防水與分流設計，有助降低颱風、淹水或單一設備故障造成水車、抽水馬達停擺的風險。水試所可就溶氧與水質監測、緊急增氧、節能設備、智慧警示及養殖場災害應變提供科研與技術推廣，並與台電、地方政府、養殖協會及產業協作演練。電力設計、供電責任與設備施工仍應由台電及合格承裝業者依法辦理。"
                                                          },
                                                          {
-                                                             "id":  "n31",
-                                                             "cluster_id":  "c18",
+                                                             "id":  "n38",
+                                                             "cluster_id":  "c21",
                                                              "hours_ago":  1,
-                                                             "published_at_note":  "Google新聞顯示約55分鐘前",
+                                                             "published_at_note":  "Google新聞顯示約1小時前；原文日期2026-08-03",
                                                              "priority":  "高",
-                                                             "source":  "LINE TODAY／自由時報",
-                                                             "title":  "44團體組農漁水利後援總會力挺賴瑞隆提三大承諾",
-                                                             "topic":  "漁業政策倡議與產業韌性",
+                                                             "source":  "中路社區發展協會／視傳媒",
+                                                             "title":  "台電宣導養殖漁業落實設備檢修 守護產業用電安全",
+                                                             "topic":  "養殖防災與供電韌性",
                                                              "sentiment":  "中性",
-                                                             "url":  "https://news.google.com/read/CBMiVkFVX3lxTE0zU1RIQmczZmNscllUUDJyYXhDY1NhajFMcEZWa2RfbldncVFwb2gyLWppWHRNU3RPS185aWx4cWJOVHUwNGxkWlVERm96Q2Y2Wk9yOXZR?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
-                                                             "short_response":  "農漁水利政策倡議涉及智慧養殖、漁港、供排水與作業安全；水試所可提供科學與技術資料，不涉選舉立場。",
-                                                             "detailed_response":  "本案屬地方選舉期間的產業政策倡議，內容包含智慧養殖、漁船與魚塭設備升級、漁港能量、國際行銷、海上醫療、作業安全及養殖區供排水。水試所基於研究與技術推廣職責，可就養殖環境監測、耐候生產、種苗與疾病防治、冷鏈加工、資源永續及風險評估提供客觀資料，並配合權責機關推動技術驗證。水試所不評論候選人或選舉支持關係，相關承諾、預算及執行可行性應由提案者與主管機關說明並依法核定。"
+                                                             "url":  "https://g15.village.tw/uninews_view.php?new_sn=137945\u0026lang=TS",
+                                                             "short_response":  "養殖生產高度依賴水車、抽水與備援電力；水試所支持設備巡檢、智慧告警與場域防災技術推廣。",
+                                                             "detailed_response":  "台電進入養殖產業宣導電力設備檢修、備用發電機試運轉、自動切換開關、防水與分流設計，有助降低颱風、淹水或單一設備故障造成水車、抽水馬達停擺的風險。水試所可就溶氧與水質監測、緊急增氧、節能設備、智慧警示及養殖場災害應變提供科研與技術推廣，並與台電、地方政府、養殖協會及產業協作演練。電力設計、供電責任與設備施工仍應由台電及合格承裝業者依法辦理。"
                                                          },
                                                          {
-                                                             "id":  "n32",
-                                                             "cluster_id":  "c18",
-                                                             "hours_ago":  0,
-                                                             "published_at_note":  "Google新聞顯示約26分鐘前",
+                                                             "id":  "n39",
+                                                             "cluster_id":  "c21",
+                                                             "hours_ago":  4,
+                                                             "published_at_note":  "Google新聞顯示約4小時前",
                                                              "priority":  "高",
                                                              "source":  "蕃新聞",
-                                                             "title":  "44個農漁水利團體大集結挺賴瑞隆 34個農漁會全到齊展現基層大團結",
-                                                             "topic":  "漁業政策倡議與產業韌性",
+                                                             "title":  "守護漁牧產業用電安全 台電台南區處進場落實防災節電宣導",
+                                                             "topic":  "養殖防災與供電韌性",
                                                              "sentiment":  "中性",
-                                                             "url":  "https://news.google.com/read/CBMiUkFVX3lxTFByZk9iWFY1VlJVR2RhalZJTWc3Y0o5X1ZIQ3NhMVNKazV4RHlxNnFkNXlQaEtKMlFVeUpsLWVCSzhaVmRKUWtVV25nTG5PSE5qZWc?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
-                                                             "short_response":  "農漁水利政策倡議涉及智慧養殖、漁港、供排水與作業安全；水試所可提供科學與技術資料，不涉選舉立場。",
-                                                             "detailed_response":  "本案屬地方選舉期間的產業政策倡議，內容包含智慧養殖、漁船與魚塭設備升級、漁港能量、國際行銷、海上醫療、作業安全及養殖區供排水。水試所基於研究與技術推廣職責，可就養殖環境監測、耐候生產、種苗與疾病防治、冷鏈加工、資源永續及風險評估提供客觀資料，並配合權責機關推動技術驗證。水試所不評論候選人或選舉支持關係，相關承諾、預算及執行可行性應由提案者與主管機關說明並依法核定。"
+                                                             "url":  "https://news.google.com/read/CBMiUkFVX3lxTFBxdWRzTFdRcWtnT2xFcUFLdDVhU3U4ODhSREZsX1h4WkFHbGU3TWFZWThBSkthemxRX3lvemNRYXBsRlV0OGNIOWZEd19jMzdnTWc?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
+                                                             "short_response":  "養殖生產高度依賴水車、抽水與備援電力；水試所支持設備巡檢、智慧告警與場域防災技術推廣。",
+                                                             "detailed_response":  "台電進入養殖產業宣導電力設備檢修、備用發電機試運轉、自動切換開關、防水與分流設計，有助降低颱風、淹水或單一設備故障造成水車、抽水馬達停擺的風險。水試所可就溶氧與水質監測、緊急增氧、節能設備、智慧警示及養殖場災害應變提供科研與技術推廣，並與台電、地方政府、養殖協會及產業協作演練。電力設計、供電責任與設備施工仍應由台電及合格承裝業者依法辦理。"
                                                          },
                                                          {
-                                                             "id":  "n33",
-                                                             "cluster_id":  "c19",
+                                                             "id":  "n40",
+                                                             "cluster_id":  "c22",
                                                              "hours_ago":  2,
-                                                             "published_at":  "2026-08-02T19:42:00+08:00",
-                                                             "priority":  "中",
-                                                             "source":  "Yahoo新聞／獨家報導",
-                                                             "title":  "翻轉農漁村印象 雲林公用頻道影片徵件八強齊聚開鏡啟航",
-                                                             "topic":  "漁村影像與地方創生",
+                                                             "published_at_note":  "Google新聞顯示約2小時前；原文日期2026-08-03",
+                                                             "priority":  "高",
+                                                             "source":  "Formosa News／民視",
+                                                             "title":  "Penghu farmers struggle to grow algae for sea urchins amid catch restrictions",
+                                                             "topic":  "養殖技術與資源永續",
                                                              "sentiment":  "正向",
-                                                             "url":  "https://tw.news.yahoo.com/%E7%BF%BB%E8%BD%89%E8%BE%B2%E6%BC%81%E6%9D%91%E5%8D%B0%E8%B1%A1-%E9%9B%B2%E6%9E%97%E5%85%AC%E7%94%A8%E9%A0%BB%E9%81%93%E5%BD%B1%E7%89%87%E5%BE%B5%E4%BB%B6%E5%85%AB%E5%BC%B7%E9%BD%8A%E8%81%9A%E9%96%8B%E9%8F%A1%E5%95%9F%E8%88%AA-114254347.html",
-                                                             "short_response":  "雲林海線影像創作有助呈現漁村生活與地方知識；水試所可提供養殖、生態與食魚教育的科學素材。",
-                                                             "detailed_response":  "以限時影像創作走入麥寮、台西、四湖與口湖，可讓漁村居民成為地方故事主體，增進社會對沿海養殖、生態環境與產業文化的理解。水試所可在權責範圍內提供水產養殖、海岸生態、氣候調適、產品品質及食魚教育素材，協助內容建立在可核實的科學資訊上。活動評選、經費與地方執行仍由主辦及權責單位辦理，拍攝亦應尊重場域安全、個人意願與生產作業。"
+                                                             "url":  "https://english.ftvnews.com.tw/news/2026729W08EA",
+                                                             "short_response":  "人工養殖海膽可分散野生捕撈壓力；水試所將關注種苗、餌料藻、水質與量產技術，支持資源永續。",
+                                                             "detailed_response":  "澎湖野生海膽採捕受季節與體型規範限制，人工養殖可提供全年供應並降低部分野生資源壓力，但目前量產瓶頸仍在餌料藻受季節、溫度、水質與規模限制。水試所可從種苗繁育、餌料藻穩定生產、水質與健康管理、成長效率、環境承載及產品品質等面向推動研究與技術驗證，並與地方政府、業者及學研單位合作。野生採捕規範、查緝與裁罰仍由權責機關依法辦理。"
                                                          },
                                                          {
-                                                             "id":  "n34",
-                                                             "cluster_id":  "c19",
-                                                             "hours_ago":  1,
-                                                             "published_at_note":  "Google新聞顯示約1小時前",
+                                                             "id":  "n41",
+                                                             "cluster_id":  "c23",
+                                                             "hours_ago":  3,
+                                                             "published_at":  "2026-08-03T18:44:49+08:00",
                                                              "priority":  "中",
-                                                             "source":  "蕃新聞",
-                                                             "title":  "翻轉農漁村印象 雲林公用頻道影片徵件八強齊聚開鏡啟航",
-                                                             "topic":  "漁村影像與地方創生",
+                                                             "source":  "睿傳媒 Rightmedia",
+                                                             "title":  "父親節爸氣食足 嘉義優鮮水產推出雙重優惠享嘉倍美味",
+                                                             "topic":  "水產行銷與產地品牌",
                                                              "sentiment":  "正向",
-                                                             "url":  "https://news.google.com/read/CBMiUkFVX3lxTE81X1VSTmp6NlNoVWl1VnVGcmtMd1h3U2Ztc0V5NUFBNjZYUGdqbDdfeHo3bXVwTXZGdmE4OEEtcXVyWWZrUTdGSzRDSTVMRTFKX2c?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
-                                                             "short_response":  "雲林海線影像創作有助呈現漁村生活與地方知識；水試所可提供養殖、生態與食魚教育的科學素材。",
-                                                             "detailed_response":  "以限時影像創作走入麥寮、台西、四湖與口湖，可讓漁村居民成為地方故事主體，增進社會對沿海養殖、生態環境與產業文化的理解。水試所可在權責範圍內提供水產養殖、海岸生態、氣候調適、產品品質及食魚教育素材，協助內容建立在可核實的科學資訊上。活動評選、經費與地方執行仍由主辦及權責單位辦理，拍攝亦應尊重場域安全、個人意願與生產作業。"
+                                                             "url":  "https://www.right-media.news/archives/225625",
+                                                             "short_response":  "嘉義優鮮電商有助縮短產地到餐桌距離；水試所可協助品質、冷鏈、加工與溯源技術，支持產地品牌。",
+                                                             "detailed_response":  "嘉義縣以節慶電商活動推廣臺灣鯛、虱目魚、鱸魚、鰻魚及加工品，有助提升在地水產品能見度並縮短產地與消費者距離。水試所可就原料品質、保鮮加工、冷鏈驗證、副產物利用、包裝與溯源技術提供研究及應用推廣，支持產地品牌建立在可驗證的品質與安全基礎上。促銷內容、售價、商品資格及食安認定仍由平台、業者、地方政府與衛生權責機關負責，水試所不為個別商品背書。"
                                                          },
                                                          {
-                                                             "id":  "n35",
-                                                             "cluster_id":  "c20",
+                                                             "id":  "n42",
+                                                             "cluster_id":  "c24",
+                                                             "hours_ago":  9,
+                                                             "published_at":  "2026-08-03T12:38:00+08:00",
+                                                             "priority":  "中",
+                                                             "source":  "原視新聞網",
+                                                             "title":  "Kiwit部落Paliwal登場 漁獲遊街展狩獵實力",
+                                                             "topic":  "漁村文化與傳統知識",
+                                                             "sentiment":  "正向",
+                                                             "url":  "https://news.ipcf.org.tw/207567",
+                                                             "short_response":  "捕魚祭承載部落傳統知識與世代傳承；水試所尊重文化主體，並可提供河川生態與資源永續科學資料。",
+                                                             "detailed_response":  "Kiwit奇美部落捕魚祭與Paliwal收穫遊行呈現年齡階層、野外技能、漁獲分享及世代傳承，應尊重部落文化主體、傳統規範與知識權利。水試所可在部落同意與共同參與前提下，就河川生態、物種辨識、資源變動、水域安全及永續利用提供科學資料與方法，協助傳統知識與現代監測相互對話。祭典安排、捕撈方式與文化詮釋由部落及相關權責單位決定，水試所不越權評斷。"
+                                                         },
+                                                         {
+                                                             "id":  "n43",
+                                                             "cluster_id":  "c25",
+                                                             "hours_ago":  9,
+                                                             "published_at":  "2026-08-03T13:00:38+08:00",
+                                                             "priority":  "高",
+                                                             "source":  "聯合新聞網",
+                                                             "title":  "海洋保育大突破！餵珊瑚吃「益生菌」能抗暖化 中研院解密耐熱關鍵",
+                                                             "topic":  "海洋保育科技",
+                                                             "sentiment":  "正向",
+                                                             "url":  "https://udn.com/news/amp/story/7266/9667456",
+                                                             "short_response":  "珊瑚共生菌研究提供耐熱保育新線索；水試所支持以完整證據鏈驗證，並審慎評估野外應用與生態風險。",
+                                                             "detailed_response":  "中研院研究團隊以近十年累積，從菌株功能、耐熱實驗、多體學到單細胞分析，證實特定共生菌具協助珊瑚抵抗高溫逆境的潛力，為珊瑚益生菌保育策略提供重要科學基礎。實驗室成果進入野外應用前，仍需評估物種與海域差異、菌相穩定性、生態風險、長期效果及監測標準。水試所可就海域環境監測、水質、微生物方法與復育技術驗證參與跨機關及學研合作，實際保育措施由海洋保育權責機關依法評估。"
+                                                         },
+                                                         {
+                                                             "id":  "n44",
+                                                             "cluster_id":  "c26",
+                                                             "hours_ago":  7,
+                                                             "published_at":  "2026-08-03T14:26:10+08:00",
+                                                             "priority":  "高",
+                                                             "source":  "公視新聞網 PNN",
+                                                             "title":  "8至12月繁殖期禁捕撈、販售抱卵母蟹 違者最高可罰15萬元",
+                                                             "topic":  "資源保育規範",
+                                                             "sentiment":  "中性",
+                                                             "url":  "https://news.pts.org.tw/article/820569",
+                                                             "short_response":  "保護抱卵母蟹與小型蟳蟹有助資源補充；水試所將持續提供繁殖與資源調查，裁罰由權責機關認定。",
+                                                             "detailed_response":  "8月1日至12月31日禁止捕撈與販售抱卵母蟹，並全年限制未達規定尺寸的蟳蟹，有助保留繁殖個體與資源補充。水試所將持續蒐集漁獲量、體長組成、抱卵比例、季節與海域差異等資料，協助評估管理成效並精進物種辨識及量測技術。禁捕、禁售、通報、查緝、裁罰及個案責任，仍應由漁業署、海巡署、地方政府等權責機關依法認定，水試所不越權下結論。"
+                                                         },
+                                                         {
+                                                             "id":  "n45",
+                                                             "cluster_id":  "c27",
+                                                             "hours_ago":  12,
+                                                             "published_at_note":  "海保署發布日期115-08-03；Google搜尋顯示約12小時前",
+                                                             "priority":  "高",
+                                                             "source":  "海洋委員會海洋保育署",
+                                                             "title":  "政院核定首部「整體海洋保護區管理政策方針」 跨部會齊心守護韌性藍海 邁向3030新里程",
+                                                             "topic":  "海洋保護區治理",
+                                                             "sentiment":  "正向",
+                                                             "url":  "https://www.oca.gov.tw/ch/home.jsp?id=14\u0026parentpath=0,2\u0026mcustomize=news_view.jsp\u0026dataserno=202608030001",
+                                                             "short_response":  "首部海洋保護區政策方針強化科學監測、參與治理與30×30目標；水試所可提供漁業資源與生態資料。",
+                                                             "detailed_response":  "行政院核定首部整體海洋保護區管理政策方針，設定三大目標、兩大策略與十大行動，並以長期監測、治理評估、權益關係人參與、海域空間規劃、MPA與OECM推動30×30目標。水試所可提供漁業資源、棲地、生物多樣性、社經影響及氣候調適資料，協助建立可追蹤的科學基線，也支持將漁民、原住民族與地方社區納入參與治理。保護區劃設、權益協調、管理及執法由海保署與各目的事業主管機關依法辦理。"
+                                                         },
+                                                         {
+                                                             "id":  "n46",
+                                                             "cluster_id":  "c27",
+                                                             "hours_ago":  11,
+                                                             "published_at_note":  "Google新聞顯示約11小時前",
+                                                             "priority":  "高",
+                                                             "source":  "Yahoo新聞",
+                                                             "title":  "政院核定首部「整體海洋保護區管理政策方針」跨部會齊心守護韌性藍海 邁向3030新里程",
+                                                             "topic":  "海洋保護區治理",
+                                                             "sentiment":  "正向",
+                                                             "url":  "https://tw.news.yahoo.com/%E6%94%BF%E9%99%A2%E6%A0%B8%E5%AE%9A%E9%A6%96%E9%83%A8-%E6%95%B4%E9%AB%94%E6%B5%B7%E6%B4%8B%E4%BF%9D%E8%AD%B7%E5%8D%80%E7%AE%A1%E7%90%86%E6%94%BF%E7%AD%96%E6%96%B9%E9%87%9D-%E8%B7%A8%E9%83%A8%E6%9C%83%E9%BD%8A%E5%BF%83%E5%AE%88%E8%AD%B7%E9%9F%8C%E6%80%A7%E8%97%8D%E6%B5%B7-%E9%82%81%E5%90%913030%E6%96%B0%E9%87%8C%E7%A8%8B-023158385.html",
+                                                             "short_response":  "首部海洋保護區政策方針強化科學監測、參與治理與30×30目標；水試所可提供漁業資源與生態資料。",
+                                                             "detailed_response":  "行政院核定首部整體海洋保護區管理政策方針，設定三大目標、兩大策略與十大行動，並以長期監測、治理評估、權益關係人參與、海域空間規劃、MPA與OECM推動30×30目標。水試所可提供漁業資源、棲地、生物多樣性、社經影響及氣候調適資料，協助建立可追蹤的科學基線，也支持將漁民、原住民族與地方社區納入參與治理。保護區劃設、權益協調、管理及執法由海保署與各目的事業主管機關依法辦理。"
+                                                         },
+                                                         {
+                                                             "id":  "n47",
+                                                             "cluster_id":  "c28",
+                                                             "hours_ago":  5,
+                                                             "published_at":  "2026-08-03T16:48:00+08:00",
+                                                             "priority":  "高",
+                                                             "source":  "Taiwan News",
+                                                             "title":  "海巡署巡護七號啟航 執行今年第2航次太平洋公海巡護",
+                                                             "topic":  "國際漁業治理與產業韌性",
+                                                             "sentiment":  "正向",
+                                                             "url":  "https://www.taiwannews.com.tw/zh/news/6413630",
+                                                             "short_response":  "太平洋公海巡護有助打擊IUU漁業及維護永續漁權；水試所可提供資源評估與科學採樣技術支援。",
+                                                             "detailed_response":  "海巡署巡護七號執行年度第二航次太平洋公海巡護，配合漁業署進行巡查、登檢與科學採樣，重點在打擊非法、未報告及不受規範漁業，履行區域漁業管理組織義務並維護遠洋漁權。水試所可依職掌提供漁業資源評估、物種辨識、採樣設計與資料分析技術，協助科學管理與國際合作。海上執法、登檢、違規認定與裁處由海巡署、漁業署及相關權責機關依法辦理。"
+                                                         },
+                                                         {
+                                                             "id":  "n48",
+                                                             "cluster_id":  "c29",
                                                              "hours_ago":  2,
-                                                             "published_at":  "2026-08-02T10:57:55+00:00",
-                                                             "priority":  "高",
-                                                             "source":  "有線新聞 i-CABLE",
-                                                             "title":  "西班牙跨國水產企業叫停全球首個八爪魚養殖場計劃",
-                                                             "topic":  "國際養殖倫理與治理",
+                                                             "published_at_note":  "歐盟頁面發布日期2026-08-03；Google新聞顯示約2小時前",
+                                                             "priority":  "中",
+                                                             "source":  "European Commission DG MARE",
+                                                             "title":  "Commission approves €20 million State aid for agricultural, fishing and aquaculture companies in Friuli Venezia Giulia region facing increased fuel and fertiliser prices",
+                                                             "topic":  "國際漁業治理與產業韌性",
                                                              "sentiment":  "中性",
-                                                             "url":  "https://www.i-cable.com/%E6%96%B0%E8%81%9E%E8%B3%87%E8%A8%8A/490467/%E8%A5%BF%E7%8F%AD%E7%89%99%E8%B7%A8%E5%9C%8B%E6%B0%B4%E7%94%A2%E4%BC%81%E6%A5%AD%E5%8F%AB%E5%81%9C%E5%85%A8%E7%90%83%E9%A6%96%E5%80%8B%E5%85%AB%E7%88%AA%E9%AD%9A%E9%A4%8A%E6%AE%96%E5%A0%B4%E8%A8%88",
-                                                             "short_response":  "西班牙八爪魚養殖計畫撤回凸顯動物福利、環境承載與監管挑戰；水試所倡議以科學證據審慎評估新物種養殖。",
-                                                             "detailed_response":  "西班牙企業因商業與監管因素撤回全球首座大型八爪魚養殖場申請，爭議涉及環境影響、密集飼養下的動物福利與物種行為需求。此案由西班牙權責機關與企業處理，臺灣不宜逕行套用其結論；但對新興養殖物種的研發與政策評估，應同步檢視種源、飼料、疾病、生物安全、環境承載、逃逸風險、屠宰方式及市場需求。水試所可提供實驗設計、行為與健康指標、環境監測及風險評估方法，供權責機關與產業參考。"
-                                                         },
-                                                         {
-                                                             "id":  "n36",
-                                                             "cluster_id":  "c18",
-                                                             "hours_ago":  1,
-                                                             "published_at_note":  "Google新聞顯示約1小時前",
-                                                             "priority":  "高",
-                                                             "source":  "PChome Online新聞",
-                                                             "title":  "「護農漁、顧收益」高雄農漁水利界全員大團結 力挺賴瑞隆",
-                                                             "topic":  "漁業政策倡議與產業韌性",
-                                                             "sentiment":  "中性",
-                                                             "url":  "https://news.google.com/read/CBMijAFBVV95cUxQREFhcHh0YVBUU0owNHFYaUlvdjVfaVFWbnR1TGdGVzVHWXVkZ29sVGxGZ1JpOUtmTjZ1N0FlalBMTENZZTJKd3V0MGg4REM1LVg0S1J4UXdickJoUzl2OWttYjFseUF3clJQN2ZkNDJnNU5aekJqdjNfSWpYS1hWbHVWdzJmQ2FKZjNGeQ?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
-                                                             "short_response":  "農漁水利政策倡議涉及智慧養殖、漁港、供排水與作業安全；水試所可提供科學與技術資料，不涉選舉立場。",
-                                                             "detailed_response":  "本案屬地方選舉期間的產業政策倡議，內容包含智慧養殖、漁船與魚塭設備升級、漁港能量、國際行銷、海上醫療、作業安全及養殖區供排水。水試所基於研究與技術推廣職責，可就養殖環境監測、耐候生產、種苗與疾病防治、冷鏈加工、資源永續及風險評估提供客觀資料，並配合權責機關推動技術驗證。水試所不評論候選人或選舉支持關係，相關承諾、預算及執行可行性應由提案者與主管機關說明並依法核定。"
+                                                             "url":  "https://oceans-and-fisheries.ec.europa.eu/news/commission-approves-eur20-million-state-aid-agricultural-fishing-and-aquaculture-companies-friuli-2026-08-03_en",
+                                                             "short_response":  "歐盟以限額援助緩解漁業與養殖燃料成本，對臺灣具韌性政策參考；仍須兼顧效率、永續與公平。",
+                                                             "detailed_response":  "歐盟核准義大利Friuli Venezia Giulia地區兩千萬歐元援助方案，以直接補助及優惠貸款緩解漁業與養殖燃料成本，依估計用油量核算，每一受益者上限五萬歐元，執行至2026年底。此案反映成本衝擊下的產業韌性工具，但臺灣制度、產業結構與財政條件不同，不宜直接套用。水試所可提供養殖能耗盤點、節能增氧、低碳生產與韌性技術效益資料；補助對象、預算與審查仍由政策及財政權責機關決定。"
                                                          }
                                                      ]
                                   }
@@ -582,54 +577,59 @@
     "sources":  [
                     {
                         "id":  "google_news_24h",
-                        "label":  "Google新聞：水產、漁業、養殖與國際治理（24小時）",
+                        "label":  "Google新聞：臺灣水產、漁業、養殖與海洋治理（24小時）",
                         "path":  "news_snapshot.sql",
                         "href":  "https://news.google.com/search?q=(%E6%B0%B4%E7%94%A2%20OR%20%E6%BC%81%E6%A5%AD%20OR%20%E9%A4%8A%E6%AE%96%20OR%20%E6%BC%81%E7%8D%B2%20OR%20%E6%BC%81%E6%9D%91%20OR%20%E6%B0%B4%E7%94%A2%E5%93%81%20OR%20%E6%B5%B7%E6%B4%8B%E4%BF%9D%E8%82%B2%20OR%20aquaculture%20OR%20fisheries%20OR%20seafood%20OR%20%22IUU%20fishing%22)%20when%3A1d\u0026hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant"
                     },
                     {
-                        "id":  "focus_smart_seafood",
-                        "label":  "焦點時報：臺南將軍智慧水產中心",
-                        "href":  "https://focus.586.com.tw/2026/08/02/p397976/"
+                        "id":  "google_news_intl",
+                        "label":  "Google News：國際養殖、漁業與IUU治理（24小時）",
+                        "href":  "https://news.google.com/search?q=%28aquaculture%20OR%20fisheries%20OR%20seafood%20OR%20%22IUU%20fishing%22%29%20when%3A1d\u0026hl=en-US\u0026gl=US\u0026ceid=US%3Aen"
                     },
                     {
-                        "id":  "ltn_crab_20260802",
-                        "label":  "自由時報：抱卵母蟹禁撈禁售",
-                        "href":  "https://news.ltn.com.tw/amp/news/life/breakingnews/5525913"
+                        "id":  "power_aquaculture",
+                        "label":  "今傳媒：養殖產業電力防災宣導",
+                        "href":  "https://focusnews.com.tw/2026/08/713904/"
                     },
                     {
-                        "id":  "ftv_urchin",
-                        "label":  "民視：澎湖馬糞海膽人工養殖",
-                        "href":  "https://www.ftvnews.com.tw/news/detail/2026802J01M1"
+                        "id":  "ftv_urchin_20260803",
+                        "label":  "Formosa News：澎湖海膽養殖與餌料藻",
+                        "href":  "https://english.ftvnews.com.tw/news/2026729W08EA"
                     },
                     {
-                        "id":  "kmweb_crab",
-                        "label":  "農業知識入口網：蟳蟹保育正式資訊",
-                        "href":  "https://kmweb.moa.gov.tw/theme_data.php?theme=news\u0026sub_theme=agri_life\u0026id=100182"
+                        "id":  "chiayi_fresh",
+                        "label":  "睿傳媒：嘉義優鮮水產電商活動",
+                        "href":  "https://www.right-media.news/archives/225625"
                     },
                     {
-                        "id":  "ltn_hualien_ice",
-                        "label":  "自由時報：花蓮漁港製冰供應中斷",
-                        "href":  "https://news.ltn.com.tw/amp/news/life/breakingnews/5525847"
+                        "id":  "ipcf_kiwit",
+                        "label":  "原視新聞網：Kiwit部落捕魚祭",
+                        "href":  "https://news.ipcf.org.tw/207567"
                     },
                     {
-                        "id":  "udn_crab_20260802",
-                        "label":  "聯合新聞網：抱卵母蟹保育規範",
-                        "href":  "https://udn.com/news/amp/story/7470/9665624"
+                        "id":  "udn_coral",
+                        "label":  "聯合新聞網：珊瑚共生菌耐熱研究",
+                        "href":  "https://udn.com/news/amp/story/7266/9667456"
                     },
                     {
-                        "id":  "cna_fisheries_policy",
-                        "label":  "中央社：高雄農漁水利政策倡議",
-                        "href":  "https://www.cna.com.tw/news/aloc/202608020185.aspx"
+                        "id":  "pts_crab",
+                        "label":  "公視新聞網：抱卵母蟹保育規範",
+                        "href":  "https://news.pts.org.tw/article/820569"
                     },
                     {
-                        "id":  "yahoo_yunlin_village",
-                        "label":  "Yahoo新聞／獨家報導：雲林農漁村影像創作",
-                        "href":  "https://tw.news.yahoo.com/%E7%BF%BB%E8%BD%89%E8%BE%B2%E6%BC%81%E6%9D%91%E5%8D%B0%E8%B1%A1-%E9%9B%B2%E6%9E%97%E5%85%AC%E7%94%A8%E9%A0%BB%E9%81%93%E5%BD%B1%E7%89%87%E5%BE%B5%E4%BB%B6%E5%85%AB%E5%BC%B7%E9%BD%8A%E8%81%9A%E9%96%8B%E9%8F%A1%E5%95%9F%E8%88%AA-114254347.html"
+                        "id":  "oca_mpa",
+                        "label":  "海洋保育署：整體海洋保護區管理政策方針",
+                        "href":  "https://www.oca.gov.tw/ch/home.jsp?id=14\u0026parentpath=0,2\u0026mcustomize=news_view.jsp\u0026dataserno=202608030001"
                     },
                     {
-                        "id":  "icable_octopus",
-                        "label":  "i-CABLE：西班牙八爪魚養殖計畫撤回",
-                        "href":  "https://www.i-cable.com/%E6%96%B0%E8%81%9E%E8%B3%87%E8%A8%8A/490467/%E8%A5%BF%E7%8F%AD%E7%89%99%E8%B7%A8%E5%9C%8B%E6%B0%B4%E7%94%A2%E4%BC%81%E6%A5%AD%E5%8F%AB%E5%81%9C%E5%85%A8%E7%90%83%E9%A6%96%E5%80%8B%E5%85%AB%E7%88%AA%E9%AD%9A%E9%A4%8A%E6%AE%96%E5%A0%B4%E8%A8%88"
+                        "id":  "taiwannews_patrol",
+                        "label":  "Taiwan News：巡護七號太平洋公海巡護",
+                        "href":  "https://www.taiwannews.com.tw/zh/news/6413630"
+                    },
+                    {
+                        "id":  "eu_state_aid",
+                        "label":  "European Commission：漁業與養殖燃料成本援助",
+                        "href":  "https://oceans-and-fisheries.ec.europa.eu/news/commission-approves-eur20-million-state-aid-agricultural-fishing-and-aquaculture-companies-friuli-2026-08-03_en"
                     }
                 ]
 }
