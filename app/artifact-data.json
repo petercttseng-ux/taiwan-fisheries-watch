@@ -5,7 +5,7 @@
                      "surface":  "dashboard",
                      "title":  "水產新聞與輿情監測儀表板",
                      "description":  "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
-                     "generatedAt":  "2026-08-03T22:09:00+08:00",
+                     "generatedAt":  "2026-08-03T22:27:00+08:00",
                      "cards":  [
                                    {
                                        "id":  "card_mentions",
@@ -108,7 +108,7 @@
                                     {
                                         "id":  "topic_chart",
                                         "title":  "議題分布",
-                                        "subtitle":  "最近24小時12則有效報導分屬9個事件群組；同一養殖供電與保護區政策事件以cluster_id合併觀察熱度。",
+                                        "subtitle":  "最近24小時14則有效報導分屬9個事件群組；同一養殖供電與保護區政策事件以cluster_id合併觀察熱度。",
                                         "type":  "horizontalBar",
                                         "intent":  "comparison",
                                         "dataset":  "topic_summary",
@@ -294,7 +294,7 @@
                                     {
                                         "id":  "intro",
                                         "type":  "markdown",
-                                        "body":  "# 水產新聞輿情監測儀表板\r\n\r\n**監測時間：** 2026-08-03 22:09（Asia/Taipei）\r\n\r\n本輪最近24小時共納入12則有效報導、9個事件群組；新增養殖供電防災、海膽養殖、產地品牌、部落捕魚祭、珊瑚益生菌、蟳蟹保育、海洋保護區政策、公海巡護及歐盟漁業援助等事件。前輪報導已逾24小時窗口而移除；同一事件保留不同媒體來源並以cluster_id歸群。正式對外發布前仍應由權責單位完成事實查核與核定。"
+                                        "body":  "# 水產新聞輿情監測儀表板\r\n\r\n**監測時間：** 2026-08-03 22:27（Asia/Taipei）\r\n\r\n本輪最近24小時共納入14則有效報導、9個事件群組；新增蕃新聞的海洋保護區政策報導與ETtoday的養殖供電防災報導，均併入既有事件群組，未形成新事件。國際掃描另見美國水產品進口監測計畫可能調整的媒體標題，但因原文內容無法充分核實，本輪未納入。正式對外發布前仍應由權責單位完成事實查核與核定。"
                                     },
                                     {
                                         "id":  "metrics",
@@ -340,27 +340,27 @@
                  },
     "snapshot":  {
                      "version":  1,
-                     "generatedAt":  "2026-08-03T22:09:00+08:00",
+                     "generatedAt":  "2026-08-03T22:27:00+08:00",
                      "status":  "ready",
                      "datasets":  {
                                       "kpis":  [
                                                    {
-                                                       "mentions":  12,
+                                                       "mentions":  14,
                                                        "clusters":  9,
-                                                       "governance":  7,
+                                                       "governance":  8,
                                                        "negative":  0
                                                    }
                                                ],
                                       "sentiment_summary":  [
                                                                 {
                                                                     "sentiment":  "正向",
-                                                                    "count":  7,
-                                                                    "share_pct":  58.3
+                                                                    "count":  8,
+                                                                    "share_pct":  57.1
                                                                 },
                                                                 {
                                                                     "sentiment":  "中性",
-                                                                    "count":  5,
-                                                                    "share_pct":  41.7
+                                                                    "count":  6,
+                                                                    "share_pct":  42.9
                                                                 },
                                                                 {
                                                                     "sentiment":  "負向",
@@ -371,11 +371,11 @@
                                       "topic_summary":  [
                                                             {
                                                                 "topic":  "養殖防災與供電韌性",
-                                                                "count":  3
+                                                                "count":  4
                                                             },
                                                             {
                                                                 "topic":  "海洋保護區治理",
-                                                                "count":  2
+                                                                "count":  3
                                                             },
                                                             {
                                                                 "topic":  "國際漁業治理與產業韌性",
@@ -406,8 +406,8 @@
                                                          {
                                                              "id":  "n37",
                                                              "cluster_id":  "c21",
-                                                             "hours_ago":  5,
-                                                             "published_at_note":  "Google新聞顯示約5小時前；原文日期2026-08-03",
+                                                             "hours_ago":  6,
+                                                             "published_at_note":  "Google新聞顯示約6小時前；原文日期2026-08-03",
                                                              "priority":  "高",
                                                              "source":  "今傳媒 JNEWS",
                                                              "title":  "台電台南區處深入養殖產業宣導 防災檢修守住漁牧業命脈",
@@ -420,8 +420,8 @@
                                                          {
                                                              "id":  "n38",
                                                              "cluster_id":  "c21",
-                                                             "hours_ago":  1,
-                                                             "published_at_note":  "Google新聞顯示約1小時前；原文日期2026-08-03",
+                                                             "hours_ago":  2,
+                                                             "published_at_note":  "Google新聞顯示約2小時前；原文日期2026-08-03",
                                                              "priority":  "高",
                                                              "source":  "中路社區發展協會／視傳媒",
                                                              "title":  "台電宣導養殖漁業落實設備檢修 守護產業用電安全",
@@ -504,7 +504,7 @@
                                                          {
                                                              "id":  "n44",
                                                              "cluster_id":  "c26",
-                                                             "hours_ago":  7,
+                                                             "hours_ago":  8,
                                                              "published_at":  "2026-08-03T14:26:10+08:00",
                                                              "priority":  "高",
                                                              "source":  "公視新聞網 PNN",
@@ -570,6 +570,34 @@
                                                              "url":  "https://oceans-and-fisheries.ec.europa.eu/news/commission-approves-eur20-million-state-aid-agricultural-fishing-and-aquaculture-companies-friuli-2026-08-03_en",
                                                              "short_response":  "歐盟以限額援助緩解漁業與養殖燃料成本，對臺灣具韌性政策參考；仍須兼顧效率、永續與公平。",
                                                              "detailed_response":  "歐盟核准義大利Friuli Venezia Giulia地區兩千萬歐元援助方案，以直接補助及優惠貸款緩解漁業與養殖燃料成本，依估計用油量核算，每一受益者上限五萬歐元，執行至2026年底。此案反映成本衝擊下的產業韌性工具，但臺灣制度、產業結構與財政條件不同，不宜直接套用。水試所可提供養殖能耗盤點、節能增氧、低碳生產與韌性技術效益資料；補助對象、預算與審查仍由政策及財政權責機關決定。"
+                                                         },
+                                                         {
+                                                             "id":  "n49",
+                                                             "cluster_id":  "c27",
+                                                             "hours_ago":  0.5,
+                                                             "published_at_note":  "Google新聞於2026-08-03 22:27顯示約31分鐘前",
+                                                             "priority":  "高",
+                                                             "source":  "蕃新聞",
+                                                             "title":  "跨部會齊心守護韌性藍海 行政院核定首部「整體海洋保護區管理政策方針」",
+                                                             "topic":  "海洋保護區治理",
+                                                             "sentiment":  "正向",
+                                                             "url":  "https://news.google.com/read/CBMiUkFVX3lxTE93dF9vdGZIRUFpUHk3Z3l4SUwxU2NKTXdrcnRteTNSVk1VUGdDWGd0LUFxeVQ0cURzV0ZOUkNqX09JT0dGc0ptTTBOc3RKeTlrVUE?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
+                                                             "short_response":  "首部海洋保護區政策方針強化科學監測、參與治理與30×30目標；水試所可提供漁業資源與生態資料。",
+                                                             "detailed_response":  "行政院核定首部整體海洋保護區管理政策方針，設定三大目標、兩大策略與十大行動，並以長期監測、治理評估、權益關係人參與、海域空間規劃、MPA與OECM推動30×30目標。水試所可提供漁業資源、棲地、生物多樣性、社經影響及氣候調適資料，協助建立可追蹤的科學基線，也支持將漁民、原住民族與地方社區納入參與治理。保護區劃設、權益協調、管理及執法由海保署與各目的事業主管機關依法辦理。"
+                                                         },
+                                                         {
+                                                             "id":  "n50",
+                                                             "cluster_id":  "c21",
+                                                             "hours_ago":  5,
+                                                             "published_at_note":  "Google新聞於2026-08-03 22:27顯示約5小時前",
+                                                             "priority":  "高",
+                                                             "source":  "ETtoday新聞雲",
+                                                             "title":  "颱風季養殖用電別大意！ 台電籲加強設備檢修避免停電釀災損",
+                                                             "topic":  "養殖防災與供電韌性",
+                                                             "sentiment":  "中性",
+                                                             "url":  "https://news.google.com/read/CBMiS0FVX3lxTFBtQW1BMmluX1JvcDJUNEpvcnRlYVZPRjl1MFRLREJSVXFHNTNwaG9FaE1RLUVHX2ZXcFhUelY3S19FdW0xdVlqMjZKSdIBS0FVX3lxTFBtQW1BMmluX1JvcDJUNEpvcnRlYVZPRjl1MFRLREJSVXFHNTNwaG9FaE1RLUVHX2ZXcFhUelY3S19FdW0xdVlqMjZKSQ?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
+                                                             "short_response":  "養殖生產高度依賴水車、抽水與備援電力；水試所支持設備巡檢、智慧告警與場域防災技術推廣。",
+                                                             "detailed_response":  "台電進入養殖產業宣導電力設備檢修、備用發電機試運轉、自動切換開關、防水與分流設計，有助降低颱風、淹水或單一設備故障造成水車、抽水馬達停擺的風險。水試所可就溶氧與水質監測、緊急增氧、節能設備、智慧警示及養殖場災害應變提供科研與技術推廣，並與台電、地方政府、養殖協會及產業協作演練。電力設計、供電責任與設備施工仍應由台電及合格承裝業者依法辦理。"
                                                          }
                                                      ]
                                   }
