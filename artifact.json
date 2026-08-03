@@ -5,7 +5,7 @@
                      "surface":  "dashboard",
                      "title":  "水產新聞與輿情監測儀表板",
                      "description":  "以水產試驗所立場彙整最新水產新聞、輿情風險與建議回應。",
-                     "generatedAt":  "2026-08-03T22:27:00+08:00",
+                     "generatedAt":  "2026-08-03T22:38:00+08:00",
                      "cards":  [
                                    {
                                        "id":  "card_mentions",
@@ -108,7 +108,7 @@
                                     {
                                         "id":  "topic_chart",
                                         "title":  "議題分布",
-                                        "subtitle":  "最近24小時14則有效報導分屬9個事件群組；同一養殖供電與保護區政策事件以cluster_id合併觀察熱度。",
+                                        "subtitle":  "最近24小時15則有效報導分屬9個事件群組；同一養殖供電、保護區政策與公海巡護事件以cluster_id合併觀察熱度。",
                                         "type":  "horizontalBar",
                                         "intent":  "comparison",
                                         "dataset":  "topic_summary",
@@ -294,7 +294,7 @@
                                     {
                                         "id":  "intro",
                                         "type":  "markdown",
-                                        "body":  "# 水產新聞輿情監測儀表板\r\n\r\n**監測時間：** 2026-08-03 22:27（Asia/Taipei）\r\n\r\n本輪最近24小時共納入14則有效報導、9個事件群組；新增蕃新聞的海洋保護區政策報導與ETtoday的養殖供電防災報導，均併入既有事件群組，未形成新事件。國際掃描另見美國水產品進口監測計畫可能調整的媒體標題，但因原文內容無法充分核實，本輪未納入。正式對外發布前仍應由權責單位完成事實查核與核定。"
+                                        "body":  "# 水產新聞輿情監測儀表板\r\n\r\n**監測時間：** 2026-08-03 22:38（Asia/Taipei）\r\n\r\n本輪最近24小時共納入15則有效報導、9個事件群組；新增風傳媒的巡護七號太平洋公海巡護報導，併入既有公海巡護事件群組，未形成新事件。國際掃描另見美國水產品進口監測計畫可能調整的媒體標題，但因原文內容無法充分核實，本輪未納入。正式對外發布前仍應由權責單位完成事實查核與核定。"
                                     },
                                     {
                                         "id":  "metrics",
@@ -340,27 +340,27 @@
                  },
     "snapshot":  {
                      "version":  1,
-                     "generatedAt":  "2026-08-03T22:27:00+08:00",
+                     "generatedAt":  "2026-08-03T22:38:00+08:00",
                      "status":  "ready",
                      "datasets":  {
                                       "kpis":  [
                                                    {
-                                                       "mentions":  14,
+                                                       "mentions":  15,
                                                        "clusters":  9,
-                                                       "governance":  8,
+                                                       "governance":  9,
                                                        "negative":  0
                                                    }
                                                ],
                                       "sentiment_summary":  [
                                                                 {
                                                                     "sentiment":  "正向",
-                                                                    "count":  8,
-                                                                    "share_pct":  57.1
+                                                                    "count":  9,
+                                                                    "share_pct":  60
                                                                 },
                                                                 {
                                                                     "sentiment":  "中性",
                                                                     "count":  6,
-                                                                    "share_pct":  42.9
+                                                                    "share_pct":  40
                                                                 },
                                                                 {
                                                                     "sentiment":  "負向",
@@ -379,7 +379,7 @@
                                                             },
                                                             {
                                                                 "topic":  "國際漁業治理與產業韌性",
-                                                                "count":  2
+                                                                "count":  3
                                                             },
                                                             {
                                                                 "topic":  "養殖技術與資源永續",
@@ -476,7 +476,7 @@
                                                          {
                                                              "id":  "n42",
                                                              "cluster_id":  "c24",
-                                                             "hours_ago":  9,
+                                                             "hours_ago":  10,
                                                              "published_at":  "2026-08-03T12:38:00+08:00",
                                                              "priority":  "中",
                                                              "source":  "原視新聞網",
@@ -574,8 +574,8 @@
                                                          {
                                                              "id":  "n49",
                                                              "cluster_id":  "c27",
-                                                             "hours_ago":  0.5,
-                                                             "published_at_note":  "Google新聞於2026-08-03 22:27顯示約31分鐘前",
+                                                             "hours_ago":  0.7,
+                                                             "published_at_note":  "Google新聞於2026-08-03 22:38顯示約43分鐘前",
                                                              "priority":  "高",
                                                              "source":  "蕃新聞",
                                                              "title":  "跨部會齊心守護韌性藍海 行政院核定首部「整體海洋保護區管理政策方針」",
@@ -598,6 +598,20 @@
                                                              "url":  "https://news.google.com/read/CBMiS0FVX3lxTFBtQW1BMmluX1JvcDJUNEpvcnRlYVZPRjl1MFRLREJSVXFHNTNwaG9FaE1RLUVHX2ZXcFhUelY3S19FdW0xdVlqMjZKSdIBS0FVX3lxTFBtQW1BMmluX1JvcDJUNEpvcnRlYVZPRjl1MFRLREJSVXFHNTNwaG9FaE1RLUVHX2ZXcFhUelY3S19FdW0xdVlqMjZKSQ?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
                                                              "short_response":  "養殖生產高度依賴水車、抽水與備援電力；水試所支持設備巡檢、智慧告警與場域防災技術推廣。",
                                                              "detailed_response":  "台電進入養殖產業宣導電力設備檢修、備用發電機試運轉、自動切換開關、防水與分流設計，有助降低颱風、淹水或單一設備故障造成水車、抽水馬達停擺的風險。水試所可就溶氧與水質監測、緊急增氧、節能設備、智慧警示及養殖場災害應變提供科研與技術推廣，並與台電、地方政府、養殖協會及產業協作演練。電力設計、供電責任與設備施工仍應由台電及合格承裝業者依法辦理。"
+                                                         },
+                                                         {
+                                                             "id":  "n51",
+                                                             "cluster_id":  "c28",
+                                                             "hours_ago":  3,
+                                                             "published_at_note":  "Google新聞於2026-08-03 22:38顯示約3小時前",
+                                                             "priority":  "高",
+                                                             "source":  "風傳媒",
+                                                             "title":  "巡護七號啟航執行太平洋公海巡護 管碧玲：守護漁權、打擊IUU漁業展現台灣影響力",
+                                                             "topic":  "國際漁業治理與產業韌性",
+                                                             "sentiment":  "正向",
+                                                             "url":  "https://news.google.com/read/CBMiTkFVX3lxTFBnczFpX191UlNCNV9PSmJJaTcxV2M0V3dXdDN5ZnpWNEItRE82LWIxMy1ISDZCcHRMSzlLaWhGLW5kZ1JqdXBjRG9UM2JlQQ?hl=zh-TW\u0026gl=TW\u0026ceid=TW%3Azh-Hant",
+                                                             "short_response":  "太平洋公海巡護有助打擊IUU漁業及維護永續漁權；水試所可提供資源評估與科學採樣技術支援。",
+                                                             "detailed_response":  "海巡署巡護七號執行年度第二航次太平洋公海巡護，配合漁業署進行巡查、登檢與科學採樣，重點在打擊非法、未報告及不受規範漁業，履行區域漁業管理組織義務並維護遠洋漁權。水試所可依職掌提供漁業資源評估、物種辨識、採樣設計與資料分析技術，協助科學管理與國際合作。海上執法、登檢、違規認定與裁處由海巡署、漁業署及相關權責機關依法辦理。"
                                                          }
                                                      ]
                                   }
