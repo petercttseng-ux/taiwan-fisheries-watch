@@ -44,7 +44,15 @@ main { min-height: 100vh; overflow: hidden; }
 }
 .header-meta { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 13px; font-weight: 700; }
 .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #58a869; box-shadow: 0 0 0 4px rgba(88,168,105,.14); }
+.status-dot.searching { background: var(--sand); box-shadow: 0 0 0 4px rgba(220,174,104,.18); animation: status-pulse 1.2s ease-in-out infinite; }
+.status-dot.warning { background: var(--coral); box-shadow: 0 0 0 4px rgba(217,102,88,.14); }
 .meta-divider { width: 1px; height: 16px; background: var(--line); margin: 0 4px; }
+
+@keyframes status-pulse { 50% { opacity: .42; transform: scale(.78); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot.searching { animation: none; }
+}
 
 .hero {
   width: min(1240px, calc(100% - 48px));
@@ -183,7 +191,7 @@ footer p { margin: 3px 0; text-align: right; }
 @media (max-width: 640px) {
   .site-header, .hero, .metric-grid, .analytics-grid, .news-section, .notice-panel { width: min(100% - 28px, 1240px); }
   .site-header { min-height: 66px; } .brand > span:last-child { font-size: 13px; }
-  .header-meta { font-size: 0; } .header-meta::after { content: "已驗證"; font-size: 11px; } .meta-divider { display: none; }
+  .header-meta { font-size: 0; } .header-meta::after { content: "後端排程"; font-size: 11px; } .meta-divider { display: none; }
   .hero { padding: 46px 0; }
   .hero h1 { font-size: 43px; }
   .hero-description { font-size: 15px; line-height: 1.75; }

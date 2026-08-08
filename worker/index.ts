@@ -19,6 +19,12 @@ interface ExecutionContext {
   passThroughOnException(): void;
 }
 
+interface ScheduledController {
+  cron: string;
+  scheduledTime: number;
+  noRetry(): void;
+}
+
 // Image security config. SVG sources with .svg extension auto-skip the
 // optimization endpoint on the client side (served directly, no proxy).
 // To route SVGs through the optimizer (with security headers), set
@@ -41,6 +47,16 @@ const worker = {
     }
 
     return handler.fetch(request, env, ctx);
+  },
+
+  async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    const request = new Request("https://dashboard.internal/api/news/refresh", {
+      method: "POST",
+      headers: { "x-dashboard-cron": controller.cron },
+    });
+    ctx.waitUntil(handler.fetch(request, env, ctx).then((response) => {
+      if (!response.ok) throw new Error(`Scheduled refresh failed with HTTP ${response.status}`);
+    }));
   },
 };
 
