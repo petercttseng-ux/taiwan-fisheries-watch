@@ -4,7 +4,10 @@ import path from "node:path";
 const AUTO_REFRESH_INTERVAL_MS = 10 * 60 * 1000;
 
 const root = process.cwd();
-const artifact = JSON.parse(fs.readFileSync(path.join(root, "app", "artifact-data.json"), "utf8"));
+const artifactPath = process.env.DASHBOARD_ARTIFACT_PATH
+  ? path.resolve(root, process.env.DASHBOARD_ARTIFACT_PATH)
+  : path.join(root, "app", "artifact-data.json");
+const artifact = JSON.parse(fs.readFileSync(artifactPath, "utf8"));
 const css = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8").replace(/^@import[^\n]*\n/, "");
 const datasets = artifact.snapshot.datasets;
 const kpis = datasets.kpis[0];
@@ -41,7 +44,7 @@ const newsCards = news.map((item) => {
 }).join("");
 
 const html = `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="最近24小時水產新聞、漁業政策與公開輿情監測"><title>水產新聞與輿情監測儀表板</title><style>${css}</style></head><body><main>
-<header class="site-header"><a class="brand" href="#top" aria-label="回到頁首"><span class="brand-mark">水</span><span>水產科技情報站</span></a><div class="header-meta"><span class="status-dot"></span>已驗證快照<span class="meta-divider"></span>每 10 分鐘自動更新</div></header>
+<header class="site-header"><a class="brand" href="#top" aria-label="回到頁首"><span class="brand-mark">水</span><span>水產科技情報站</span></a><div class="header-meta"><span class="status-dot"></span>GitHub 自動監測中<span class="meta-divider"></span>每 10 分鐘自動搜尋</div></header>
 <section class="hero" id="top"><div class="hero-copy"><p class="eyebrow">FISHERIES INTELLIGENCE · TAIWAN</p><h1>水產新聞與<br><span>輿情監測儀表板</span></h1><p class="hero-description">彙整最近 24 小時水產、漁業、養殖、食安、資源保育與國際治理動態，並以水產試驗所科研及技術推廣立場提供回應建議。</p><div class="freshness"><span>最後監測</span><strong>2026 / 08 / 01　10:34</strong><span>Asia / Taipei</span></div></div>
 <aside class="signal-card"><div class="signal-topline"><span class="live-pill"><i></i>最新高優先</span><span>${relativeTime(topAlert.hours_ago)}</span></div><p class="signal-source">${esc(topAlert.source)} · ${esc(topAlert.topic)}</p><h2>${esc(topAlert.title)}</h2><p>${esc(topAlert.short_response)}</p><a href="${esc(topAlert.url)}" target="_blank" rel="noreferrer">查看原始報導 ↗</a><div class="signal-grid"><span></span><span></span><span></span><span></span><span></span><span></span></div></aside></section>
 <section class="metric-grid"><article class="metric-card"><div class="metric-icon">◎</div><div><span>有效新聞</span><strong>${kpis.mentions}</strong><small>最近 24 小時</small></div></article><article class="metric-card"><div class="metric-icon">◫</div><div><span>事件群組</span><strong>${kpis.clusters}</strong><small>重複報導已歸群</small></div></article><article class="metric-card"><div class="metric-icon">⌁</div><div><span>治理與保育</span><strong>${kpis.governance}</strong><small>需政策溝通</small></div></article><article class="metric-card risk-card"><div class="metric-icon">!</div><div><span>負向訊號</span><strong>${kpis.negative}</strong><small>需持續追蹤</small></div></article></section>

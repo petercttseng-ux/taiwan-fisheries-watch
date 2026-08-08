@@ -39,3 +39,19 @@ test("refresh failures preserve the last successful dashboard snapshot", async (
   assert.match(route, /自動搜尋失敗，已保留上一版資料/);
   assert.match(database, /ON CONFLICT\(id\) DO UPDATE/);
 });
+
+test("GitHub Pages refreshes and deploys on its own ten-minute schedule", async () => {
+  const [workflow, refresher, staticBuilder] = await Promise.all([
+    readFile(new URL(".github/workflows/deploy-pages.yml", root), "utf8"),
+    readFile(new URL("scripts/refresh-static.mjs", root), "utf8"),
+    readFile(new URL("scripts/build-static.mjs", root), "utf8"),
+  ]);
+
+  assert.match(workflow, /cron:\s*"\*\/10 \* \* \* \*"/);
+  assert.match(workflow, /npm run refresh:static/);
+  assert.match(workflow, /actions\/upload-pages-artifact@v4/);
+  assert.match(workflow, /actions\/deploy-pages@v4/);
+  assert.match(refresher, /searchLatestNews\(\)/);
+  assert.match(refresher, /DASHBOARD_ARTIFACT_PATH/);
+  assert.match(staticBuilder, /process\.env\.DASHBOARD_ARTIFACT_PATH/);
+});
