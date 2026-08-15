@@ -322,9 +322,12 @@ function summarize(news: NewsItem[], errors: string[]): DashboardSnapshot {
   const topicSummary = [...topicCounts].map(([topic, count]) => ({ topic, count })).sort((a, b) => b.count - a.count);
   const clusters = new Set(news.map((item) => item.cluster_id)).size;
   const governance = news.filter((item) => /治理|保育|食安/.test(item.topic)).length;
+  const generatedAt = new Date(Date.now() + 8 * 60 * 60 * 1000)
+    .toISOString()
+    .replace("Z", "+08:00");
 
   return {
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     datasets: {
       kpis: [{ mentions: news.length, clusters, governance, negative: sentimentSummary.find((item) => item.sentiment === "負向")?.count ?? 0 }],
       news_items: news,
