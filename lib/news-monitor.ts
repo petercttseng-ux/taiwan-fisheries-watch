@@ -348,7 +348,16 @@ export async function searchLatestNews(): Promise<DashboardSnapshot> {
     url.searchParams.set("ceid", "TW:zh-Hant");
 
     try {
-      const response = await fetch(url, { headers: { accept: "application/rss+xml, application/xml;q=0.9" } });
+      const headers = {
+        accept: "application/rss+xml, application/xml;q=0.9",
+        "accept-language": "zh-TW,zh;q=0.9,en;q=0.7",
+        "user-agent": "Mozilla/5.0 (compatible; FisheriesNewsMonitor/1.0)",
+      };
+      let response = await fetch(url, { headers });
+      if (response.status >= 500) {
+        await new Promise((resolve) => setTimeout(resolve, 750));
+        response = await fetch(url, { headers });
+      }
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return parseRss(await response.text());
     } catch (error) {
