@@ -35,6 +35,9 @@ jobs:
       - name: Search latest fisheries news and build static dashboard
         run: npm run refresh:static
 
+      - name: Publish latest snapshot for the Sites fallback
+        run: node --input-type=module -e "import fs from 'node:fs'; const artifact = JSON.parse(fs.readFileSync('work/latest-artifact.json', 'utf8')); fs.writeFileSync('docs/snapshot.json', JSON.stringify(artifact.snapshot));"
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 

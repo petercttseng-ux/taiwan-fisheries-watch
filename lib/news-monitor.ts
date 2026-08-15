@@ -29,6 +29,8 @@ export type DashboardSnapshot = {
   };
 };
 
+const PUBLISHED_SNAPSHOT_URL = "https://petercttseng-ux.github.io/taiwan-fisheries-watch/snapshot.json";
+
 const SEARCH_QUERIES = [
   "(水產 OR 漁業署 OR 水產試驗所 OR 養殖 OR 漁港) when:1d",
   "(水產品 OR 漁村 OR 海洋保育 OR 國際漁業 OR IUU) when:1d",
@@ -374,6 +376,30 @@ export async function searchLatestNews(): Promise<DashboardSnapshot> {
   });
 
   const news = [...deduplicated.values()].sort((a, b) => a.hours_ago - b.hours_ago).slice(0, 60);
-  if (news.length === 0) throw new Error(errors.join("；") || "搜尋未傳回任何有效新聞");
+  if (news.length === 0) {
+    try {
+      const response = await fetch(PUBLISHED_SNAPSHOT_URL, {
+        headers: { accept: "application/json" },
+        cache: "no-store",
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const snapshot = await response.json() as DashboardSnapshot;
+      if (!snapshot.generatedAt || !snapshot.datasets?.news_items?.length) {
+        throw new Error("快照內容不完整");
+      }
+      return {
+        ...snapshot,
+        searchMeta: {
+          queryCount: SEARCH_QUERIES.length,
+          resultCount: snapshot.datasets.news_items.length,
+          source: "GitHub Pages 最新監測快照",
+          errors,
+        },
+      };
+    } catch (fallbackError) {
+      errors.push(`GitHub Pages 備援: ${fallbackError instanceof Error ? fallbackError.message : "讀取失敗"}`);
+      throw new Error(errors.join("；") || "搜尋未傳回任何有效新聞");
+    }
+  }
   return summarize(news, errors);
 }
