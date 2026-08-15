@@ -125,7 +125,7 @@ export default function Home() {
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow">FISHERIES INTELLIGENCE · TAIWAN</p>
+          <p className="eyebrow">農業部水產試驗所</p>
           <h1>水產新聞與<br /><span>輿情監測儀表板</span></h1>
           <p className="hero-description">彙整最近 24 小時水產、漁業、養殖、食安、資源保育與國際治理動態，並以水產試驗所科研及技術推廣立場提供回應建議。</p>
           <div className="freshness"><span>最後成功更新</span><strong>{snapshotTime(snapshot.generatedAt)}</strong><span>{schedule ? `下次搜尋 ${snapshotTime(schedule.nextRunAt, true)}` : "正在讀取排程"}</span></div>
