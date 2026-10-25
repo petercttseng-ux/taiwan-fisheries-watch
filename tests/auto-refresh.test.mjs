@@ -47,7 +47,7 @@ test("GitHub Pages refreshes and deploys on its own ten-minute schedule", async 
     readFile(new URL("scripts/build-static.mjs", root), "utf8"),
   ]);
 
-  assert.match(workflow, /cron:\s*"\*\/10 \* \* \* \*"/);
+  assert.match(workflow, /cron:\s*"7,17,27,37,47,57 \* \* \* \*"/);
   assert.match(workflow, /npm run refresh:static/);
   assert.match(workflow, /actions\/upload-pages-artifact@v4/);
   assert.match(workflow, /actions\/deploy-pages@v4/);
